@@ -28,6 +28,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MenuChoice.class));
                 finish();
             }
-        }, 5000L);
+        }, 3000L);
     }
 }

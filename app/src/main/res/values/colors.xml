@@ -2,7 +2,7 @@
 <resources>
   <!-- Theme color -->
   <color name="colorAccent">#d45c4f</color>
-  <color name="colorPrimary">#d45c4f</color>
+  <color name="colorPrimary">#D45C4F</color>
 
   <color name="colorPrimaryLight">#ff8c7b</color>
 
