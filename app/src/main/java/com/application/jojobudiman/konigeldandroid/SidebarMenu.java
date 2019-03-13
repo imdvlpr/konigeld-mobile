@@ -47,7 +47,7 @@ public class SidebarMenu extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        View headerView= LayoutInflater.from(this).inflate(R.layout.nav_header_sidebar_menu, null);
+        View headerView = LayoutInflater.from(this).inflate(R.layout.nav_header_sidebar_menu, null);
         navigationView.addHeaderView(headerView);
         navigationView.getHeaderView(0).setVisibility(View.GONE);
     }
@@ -87,26 +87,23 @@ public class SidebarMenu extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_checkout) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_transactions) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_products) {
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_settings) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
 }
+
