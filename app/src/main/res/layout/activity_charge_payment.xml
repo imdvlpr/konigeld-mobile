@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChargePayment">
+
+    <RelativeLayout
+        android:id="@+id/topheader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@drawable/closebtnred" />
+
+    </RelativeLayout>
+    //Total charge main database untuk dinamis
+    <TextView
+        android:id="@+id/totalcharge"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/dosisthicc"
+        android:text="Rp 340.000.00"
+        android:textColor="@color/colorPrimary"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/paymenttitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/dosisregular"
+        android:text="Select payment type below"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/totalcharge" />
+
+    <TextView
+        android:id="@+id/cashmethod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:fontFamily="@font/dosisthicc"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:text="Cash"
+        android:background="@drawable/topbotborder"
+        android:drawableRight="@drawable/rightbtn"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paymenttitle"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EnterCash">
+
+    <RelativeLayout
+        android:id="@+id/topheader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/borderbottomgap"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@drawable/closebtnred" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_padding="10dp"
+            android:layout_gravity="left"
+            android:layout_toEndOf="@+id/menu"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/dosisthicc"
+            android:text="Rp xxx Cash"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            />
+    </RelativeLayout>
+
+    <TextView
+    android:id="@+id/enteramount"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="25dp"
+    android:layout_marginTop="50dp"
+    android:backgroundTint="@color/colorPrimary"
+    android:fontFamily="@font/dosisthicc"
+    android:text="ENTER CASH AMOUNT"
+    android:textColor="@color/colorPrimary"
+    android:textSize="14sp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/topheader" />
+
+    <EditText
+        android:id="@+id/priceText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/dosisregular"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:inputType="number"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:hint="Enter amount"
+        android:backgroundTint="@color/colorPrimary"
+        android:paddingBottom="20dp"
+        android:textSize="16sp"
+        android:paddingRight="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enteramount"
+        />
+
+    <LinearLayout
+        android:id="@+id/suggestionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop = "10dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priceText"
+        >
+
+        <Button
+            android:id="@+id/onebtn"
+            style="@style/SuggestionCashButton"
+            android:textAllCaps="false"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:text="Rp 300.000" />
+
+        <Button
+            android:id="@+id/twobtn"
+            style="@style/SuggestionCashButton"
+            android:textAllCaps="false"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Rp 350.000" />
+
+        <Button
+            android:id="@+id/threebtn"
+            style="@style/SuggestionCashButton"
+            android:textAllCaps="false"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Rp 400.000" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/chargebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/buttonrectangle"
+        android:fontFamily="@font/dosisthicc"
+        android:text="Charge"
+        android:textColor="@color/colorSecondaryText"
+        android:textSize="20sp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/suggestionLayout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

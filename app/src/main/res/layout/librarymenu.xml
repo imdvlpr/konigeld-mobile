@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/activetext"
+                android:background="@drawable/normaltext"
                 android:clickable="true"
                 android:fontFamily="@font/dosisthicc"
                 android:gravity="center"
@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/normaltext"
+                android:background="@drawable/activetext"
                 android:clickable="true"
                 android:fontFamily="@font/dosisthicc"
                 android:gravity="center"
@@ -121,28 +121,112 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nextbtn"
         >
 
-        <com.mancj.materialsearchbar.MaterialSearchBar
-            style="@style/MaterialSearchBarLight"
-            app:mt_speechMode="true"
-            app:mt_hint="Custom hint"
-            app:mt_maxSuggestionsCount="10"
+
+        <SearchView
+            android:id="@+id/searchSale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/searchBar"
-
+            android:searchIcon="@drawable/search"
+            android:searchHintIcon="@drawable/search"
+            android:background="@drawable/borderbottomgap"
+            android:backgroundTint="@color/colorPrimary"
             />
 
+        <Button
+            android:id="@+id/createitem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mainbutton"
+            android:fontFamily="@font/dosisthicc"
+            android:textColor="@color/colorSecondaryText"
+            android:text="CREATE NEW ITEM"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchSale"
+        />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <Button
+            android:id="@+id/createdisc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mainbutton"
+            android:fontFamily="@font/dosisthicc"
+            android:textColor="@color/colorSecondaryText"
+            android:text="CREATE DISCOUNT"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchSale"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <Button
+            android:id="@+id/editcategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mainbutton"
+            android:fontFamily="@font/dosisthicc"
+            android:textColor="@color/colorSecondaryText"
+            android:text="EDIT CATEGORIES"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchSale"
+            />
+
+        <TextView
+            android:id="@+id/discounts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:fontFamily="@font/dosisthicc"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:text="Discounts"
+            android:background="@drawable/borderbottomgap"
+            android:drawableRight="@drawable/rightbtn"
+            android:padding="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editcategory"
+        />
+
+        <TextView
+            android:id="@+id/allitems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:fontFamily="@font/dosisthicc"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:text="All Items"
+            android:background="@drawable/borderbottomgap"
+            android:drawableRight="@drawable/rightbtn"
+            android:padding="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editcategory"
+            />
 
     </LinearLayout>
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

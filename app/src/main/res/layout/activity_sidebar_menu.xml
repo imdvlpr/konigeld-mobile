@@ -22,6 +22,21 @@
         android:fitsSystemWindows="true"
         app:itemBackground="@color/colorPrimary"
         app:itemTextAppearance="@style/DosisFont"
-        app:menu="@menu/activity_sidebar_menu_drawer" />
+        app:menu="@menu/activity_sidebar_menu_drawer">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_margin="25dp"
+            android:layout_marginBottom="30dp"
+            android:scaleType="center"
+            android:background="@drawable/logowhite"
+            android:layout_gravity="bottom"
+            />
+
+    </com.google.android.material.navigation.NavigationView>
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

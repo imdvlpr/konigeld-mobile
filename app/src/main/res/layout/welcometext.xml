@@ -44,10 +44,12 @@
         android:gravity="center_horizontal"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:text="Vincensius Marcelus"
         android:textColor="@color/colorPrimary"
-        android:textColorHint="@color/colorPrimaryLight"
-        android:textSize="48dp"
+        android:textAlignment="center"
+        android:textSize="36dp"
         android:layout_marginTop= "50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -62,10 +64,10 @@
         android:fontFamily="@font/dosisthicc"
         android:textColor="@color/colorSecondaryText"
         android:text="NEXT"
-        android:layout_marginTop="150dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcomename" />
 
 
