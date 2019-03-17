@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".products.Products">
+
+    <RelativeLayout
+        android:id="@+id/topheader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@drawable/hamburgermenu" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="left"
+            android:layout_toEndOf="@+id/menu"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/dosisthicc"
+            android:text="Products"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="18sp"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/allproducts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:fontFamily="@font/dosisthicc"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:text="All Products"
+        android:textSize="20sp"
+        android:drawableRight="@drawable/rightbtn"
+        android:layout_marginTop="25dp"
+        android:padding="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topheader"
+        />
+
+    <TextView
+        android:id="@+id/categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:fontFamily="@font/dosisthicc"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:text="Categories"
+        android:textSize="20sp"
+        android:drawableRight="@drawable/rightbtn"
+        android:padding="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/allproducts"
+        />
+
+    <TextView
+        android:id="@+id/modifiers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:fontFamily="@font/dosisthicc"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:text="Modifiers"
+        android:textSize="20sp"
+        android:drawableRight="@drawable/rightbtn"
+        android:padding="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categories"
+        />
+
+    <TextView
+        android:id="@+id/discounts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:fontFamily="@font/dosisthicc"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:text="Discounts"
+        android:textSize="20sp"
+        android:drawableRight="@drawable/rightbtn"
+        android:padding="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modifiers"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".checkout.PaymentSuccess">
+
+    <RelativeLayout
+        android:id="@+id/topheader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/newsale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right|end"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:fontFamily="@font/dosisthicc"
+            android:text="New Sale"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/paymentsuccess"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/change"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/dosisthicc"
+        android:textColor="@color/colorPrimary"
+        android:text="No change out of Rp 340.000.00"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/check"
+        />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/dosisregular"
+        android:textColor="@color/colorPrimary"
+        android:text="How would you like your receipt?"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/change"
+        />
+
+
+
+        <LinearLayout
+            android:id="@+id/bottomselection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toTopOf="@id/bottomselection2"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <EditText
+                android:id="@+id/emailReceipt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:drawableLeft="@drawable/smallemail"
+                android:drawablePadding="10dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingBottom="15dp"
+                android:layout_marginTop="10dp"
+                android:hint="Email Receipt"
+                android:textColorHint="@color/colorPrimaryLight"
+                android:backgroundTint="@color/colorPrimary"
+                android:textAlignment="textStart"
+                android:fontFamily="@font/dosisregular"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                />
+
+            <ImageView
+                android:id="@+id/emailme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.25"
+                android:background="@drawable/rightbtn"
+                />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomselection2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:elevation="4dp"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/noReceipt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/nope"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/dosisregular"
+            android:paddingLeft="25dp"
+            android:text="No Receipt"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/addterms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dosisregular"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="By providing your contact information, you agree
+businesses you frequent may send you digital
+receipts, and messages"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="8sp" />
+            />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

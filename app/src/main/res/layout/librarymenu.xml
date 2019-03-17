@@ -4,118 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainMenu">
+    tools:context=".checkout.MainMenu2">
 
-
-    <RelativeLayout
-        android:id="@+id/topheader"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:background="@drawable/hamburgermenu" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:fontFamily="@font/dosisthicc"
-            android:text="Current Sale"
-            android:textColor="@color/colorSecondaryText"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <TextView
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="end"
-            android:fontFamily="@font/dosisthicc"
-            android:text="LOGOUT"
-            android:textColor="@color/colorSecondaryText"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-    </RelativeLayout>
-
-    <Button
-        android:id="@+id/nextbtn"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/buttonrectangle"
-        android:fontFamily="@font/dosisthicc"
-        android:text="Charge Rp 340.000"
-        android:textColor="@color/colorSecondaryText"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topheader" />
-
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="25dp"
-        android:stretchColumns="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nextbtn">
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/custom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/normaltext"
-                android:clickable="true"
-                android:fontFamily="@font/dosisthicc"
-                android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="CUSTOM"
-                android:textColor="@color/colorPrimary"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/library"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/activetext"
-                android:clickable="true"
-                android:fontFamily="@font/dosisthicc"
-                android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="LIBRARY"
-                android:textColor="@color/colorPrimary"
-                android:textSize="24sp" />
-
-        </TableRow>
-    </TableLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -124,9 +14,8 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nextbtn"
+        app:layout_constraintTop_toTopOf="parent"
         >
-
 
         <SearchView
             android:id="@+id/searchSale"
@@ -139,13 +28,13 @@
             />
 
         <Button
-            android:id="@+id/createitem"
+            android:id="@+id/viewproduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/mainbutton"
             android:fontFamily="@font/dosisthicc"
             android:textColor="@color/colorSecondaryText"
-            android:text="CREATE NEW ITEM"
+            android:text="VIEW PRODUCTS"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -158,13 +47,13 @@
             android:background="@color/colorPrimaryDark" />
 
         <Button
-            android:id="@+id/createdisc"
+            android:id="@+id/viewdisc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/mainbutton"
             android:fontFamily="@font/dosisthicc"
             android:textColor="@color/colorSecondaryText"
-            android:text="CREATE DISCOUNT"
+            android:text="VIEW DISCOUNTS"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -177,13 +66,13 @@
             android:background="@color/colorPrimaryDark" />
 
         <Button
-            android:id="@+id/editcategory"
+            android:id="@+id/viewcategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/mainbutton"
             android:fontFamily="@font/dosisthicc"
             android:textColor="@color/colorSecondaryText"
-            android:text="EDIT CATEGORIES"
+            android:text="VIEW CATEGORIES"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -205,7 +94,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editcategory"
+            app:layout_constraintTop_toBottomOf="@+id/viewcategory"
         />
 
         <TextView
@@ -216,14 +105,14 @@
             android:fontFamily="@font/dosisthicc"
             android:textColor="@color/colorPrimary"
             android:gravity="center_vertical"
-            android:text="All Items"
+            android:text="All Products"
             android:background="@drawable/borderbottomgap"
             android:drawableRight="@drawable/rightbtn"
             android:padding="20dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editcategory"
+            app:layout_constraintTop_toBottomOf="@+id/viewcategory"
             />
 
     </LinearLayout>

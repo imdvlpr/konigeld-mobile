@@ -14,39 +14,56 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".EnterCash"></activity>
-        <activity android:name=".ChargePayment" />
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".checkout.PaymentSuccessEmailReceipt"></activity>
+        <activity android:name=".checkout.PaymentSuccessNoReceipt" />
+        <activity android:name=".checkout.PaymentSuccess" />
+        <activity
+            android:name=".ChangeMenu"
+            android:label="@string/title_activity_change_menu"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
+        <activity android:name=".Receipt" />
+        <activity android:name=".checkout.EnterCash" />
+        <activity android:name=".checkout.ChargePayment" />
         <activity android:name=".StockRecieved" />
         <activity android:name=".CreateProduct" />
         <activity
-            android:name=".SidebarMenu"
+            android:name=".sidebar.SidebarMenu"
             android:label="@string/title_activity_sidebar_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".WelcomeText" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".starter.WelcomeText" />
+        <activity android:name=".starter.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MenuChoice">
+        <activity android:name=".starter.MenuChoice">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUp">
+        <activity android:name=".starter.SignUp">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignIn">
+        <activity android:name=".starter.SignIn">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainFragment">
+        <activity
+            android:name=".checkout.MainFragment"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TestRun"
+            android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

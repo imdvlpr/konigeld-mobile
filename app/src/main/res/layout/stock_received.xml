@@ -22,7 +22,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_padding="10dp"
             android:layout_gravity="left"
             android:background="@drawable/backbtn" />
 
