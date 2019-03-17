@@ -31,10 +31,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
-public class MainFragment extends AppCompatActivity {
+public class MainFragment extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     RelativeLayout topHeader;
     TabLayout selectButton;
     Toolbar toolbar;
+    DrawerLayout drawer;
+    NavigationView navigationView;
+    ActionBarDrawerToggle toggle;
     Button charge;
     ImageView menu;
     TextView custom, library;
@@ -46,14 +49,15 @@ public class MainFragment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_menu);
+        setContentView(R.layout.activity_sidebar_menu);
 
         topHeader = (RelativeLayout) findViewById(R.id.topheader);
         selectButton = (TabLayout) findViewById(R.id.checkoutTabs);
         charge = (Button) findViewById(R.id.chargebtn);
         viewPager = (ViewPager) findViewById(R.id.container);
-        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        final NavigationView navigationView = findViewById(R.id.nav_view);
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         final ImageButton menu = (ImageButton) findViewById(R.id.hamburger);
 
         menu.setOnClickListener(new View.OnClickListener() {
@@ -82,8 +86,20 @@ public class MainFragment extends AppCompatActivity {
         CustomFragment = new MainMenu();
         LibraryFragment = new MainMenu2();
 
-    }
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle("Home");
 
+        if (savedInstanceState == null){
+            Fragment currentFragment = new MainMenu();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.content_main,currentFragment)
+                    .commit();
+        }
+
+    }
 
     private void setFragment (Fragment fragment) {
 
@@ -92,6 +108,56 @@ public class MainFragment extends AppCompatActivity {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        drawer.removeDrawerListener(toggle);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        Bundle bundle = new Bundle();
+        Fragment fragment = null;
+        String title = "";
+        if (id == R.id.nav_checkout){
+            title = "Current Sale";
+            fragment = new MainMenu();
+        } else if (id == R.id.nav_transactions) {
+            title = "Transactions";
+            fragment = new Transactions();
+        } else if (id == R.id.nav_products) {
+            title= "Settings";
+            fragment = new Products();
+
+        } else if (id == R.id.nav_settings) {
+            title = "Settings";
+            fragment = new AccountSettings();
+        }
+
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.content_main, fragment)
+                    .commit();
+        }
+
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle(title);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
 
