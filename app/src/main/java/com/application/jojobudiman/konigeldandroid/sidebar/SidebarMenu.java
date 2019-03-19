@@ -33,8 +33,6 @@ public class SidebarMenu extends AppCompatActivity implements NavigationView.OnN
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sidebar_menu);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         menu = (ImageView)findViewById(R.id.hamburger);

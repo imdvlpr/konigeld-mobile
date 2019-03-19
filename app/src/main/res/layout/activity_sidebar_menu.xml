@@ -9,30 +9,10 @@
     tools:openDrawer="start"
     tools:context=".sidebar.SidebarMenu">
 
-    <LinearLayout
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:elevation="4dp"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            />
-
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-
-
-    </LinearLayout>
-
+        android:layout_height="match_parent" />
 
 
     <com.google.android.material.navigation.NavigationView
@@ -63,3 +43,5 @@
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
+
+

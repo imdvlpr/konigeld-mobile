@@ -18,10 +18,6 @@
         <activity android:name=".checkout.PaymentSuccessEmailReceipt"></activity>
         <activity android:name=".checkout.PaymentSuccessNoReceipt" />
         <activity android:name=".checkout.PaymentSuccess" />
-        <activity
-            android:name=".ChangeMenu"
-            android:label="@string/title_activity_change_menu"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
         <activity android:name=".Receipt" />
         <activity android:name=".checkout.EnterCash" />
         <activity android:name=".checkout.ChargePayment" />

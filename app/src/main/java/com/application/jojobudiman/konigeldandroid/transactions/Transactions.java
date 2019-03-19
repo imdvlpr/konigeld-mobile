@@ -1,6 +1,7 @@
 package com.application.jojobudiman.konigeldandroid.transactions;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
@@ -41,23 +42,14 @@ public class Transactions extends Fragment {
 
         View view = inflater.inflate(R.layout.activity_transactions, container, false);
 
-        Intent i = new Intent(getActivity(), Transactions.class);
-        startActivity(i);
-
-        String[] lists = {
-                "Abundance",
-                "Anxiety",
-                "Bruxism",
-                "Discipline",
-                "Drug Addiction"
-        };
+        final DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
         receipts = (ListView) view.findViewById(R.id.receiptList);
         paygains = (LinearLayout) view.findViewById(R.id.transaction_receipt);
         ramount = (TextView) view.findViewById(R.id.amount);
         rtime = (TextView) view.findViewById(R.id.time);
 
 
-        receipts.setAdapter(new ArrayAdapter(getActivity(), R.layout.transaction_receipts, R.id.amount, lists));
+        receipts.setAdapter(new ArrayAdapter(getActivity(), R.layout.transaction_receipts, R.id.amount));
         receipts.setSelected(true);
 
 

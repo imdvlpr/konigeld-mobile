@@ -1,6 +1,7 @@
 package com.application.jojobudiman.konigeldandroid.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -30,7 +31,7 @@ public class AccountSettings extends Fragment {
 
 
         View view = inflater.inflate(R.layout.activity_account_settings, container, false);
-
+        final DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
         calcoutput = (TextView) view.findViewById(R.id.output);
         one = (Button) view.findViewById(R.id.onebtn);
         two = (Button) view.findViewById(R.id.twobtn);

@@ -1,6 +1,7 @@
 package com.application.jojobudiman.konigeldandroid.products;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
@@ -34,6 +35,7 @@ public class Products extends Fragment {
         cat = (TextView) view.findViewById(R.id.categories);
         mod = (TextView) view.findViewById(R.id.modifiers);
         disc = (TextView) view.findViewById(R.id.discounts);
+        final DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
 
         prod.setOnClickListener(new View.OnClickListener() {
             @Override
