@@ -20,9 +20,6 @@ public class AccountSettings extends Fragment {
         // Required empty public constructor
     }
 
-    TextView calcoutput;
-    Button one, two, three, four, five, six, seven, eight, nine, zero, clear, add;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,20 +27,6 @@ public class AccountSettings extends Fragment {
 
 
         View view = inflater.inflate(R.layout.activity_account_settings, container, false);
-
-        calcoutput = (TextView) view.findViewById(R.id.output);
-        one = (Button) view.findViewById(R.id.onebtn);
-        two = (Button) view.findViewById(R.id.twobtn);
-        three = (Button) view.findViewById(R.id.threebtn);
-        four = (Button) view.findViewById(R.id.fourbtn);
-        five = (Button) view.findViewById(R.id.fivebtn);
-        six = (Button) view.findViewById(R.id.sixbtn);
-        seven = (Button) view.findViewById(R.id.sevenbtn);
-        eight = (Button) view.findViewById(R.id.eightbtn);
-        nine = (Button) view.findViewById(R.id.ninebtn);
-        zero = (Button) view.findViewById(R.id.zerobtn);
-        clear = (Button) view.findViewById(R.id.clearbtn);
-        add = (Button) view.findViewById(R.id.addbtn);
 
 
         // Inflate the layout for this fragment

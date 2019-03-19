@@ -14,8 +14,6 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
     private Context mContext;
-    //integer to count number of tabs
-    int tabCount;
 
     //Constructor to the class
     public PagerAdapter(FragmentManager fm, Context context) {

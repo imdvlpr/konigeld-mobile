@@ -3,6 +3,7 @@ package com.application.jojobudiman.konigeldandroid.sidebar;
 import android.os.Bundle;
 
 import com.application.jojobudiman.konigeldandroid.R;
+import com.application.jojobudiman.konigeldandroid.checkout.MainFragment;
 import com.application.jojobudiman.konigeldandroid.checkout.MainMenu;
 
 import android.util.Log;

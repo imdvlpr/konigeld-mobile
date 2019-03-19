@@ -52,7 +52,6 @@ public class MainFragment extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_sidebar_menu);
 
         topHeader = (RelativeLayout) findViewById(R.id.topheader);
-        selectButton = (TabLayout) findViewById(R.id.checkoutTabs);
         charge = (Button) findViewById(R.id.chargebtn);
         viewPager = (ViewPager) findViewById(R.id.container);
         drawer = findViewById(R.id.drawer_layout);
@@ -75,16 +74,6 @@ public class MainFragment extends AppCompatActivity implements NavigationView.On
                 startActivity(i);
             }
         });
-
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), this);
-
-        viewPager.setAdapter(adapter);
-
-        // Give the TabLayout the ViewPager
-        selectButton.setupWithViewPager(viewPager);
-
-        CustomFragment = new MainMenu();
-        LibraryFragment = new MainMenu2();
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -159,17 +148,5 @@ public class MainFragment extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-    /*public void onClick(View v) {
-        switch(v.getId()) {
-            case R.id.menu:
-                drawer.openDrawer(GravityCompat.START);
-                Log.d("drawer", "Drawer opened!");
-                break;
-            default:
-                break;
-        }
-    }*/
 
 }

@@ -30,7 +30,7 @@ public class MainMenu extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.calculatorcount, container, false);
+        View view = inflater.inflate(R.layout.activity_custom_menu, container, false);
 
         calcoutput = (TextView) view.findViewById(R.id.output);
         one = (Button) view.findViewById(R.id.onebtn);
