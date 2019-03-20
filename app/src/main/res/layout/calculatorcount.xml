@@ -13,12 +13,14 @@
         android:fontFamily="@font/dosisthicc"
         android:gravity="center_vertical|end"
         android:paddingRight="30dp"
-        android:text="Rp 100000"
+        android:text="Rp 0"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimary"
         android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/calculatorLayout"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/calculatorLayout" />
+        app:layout_constraintVertical_bias="0.508"
+        tools:layout_editor_absoluteX="0dp" />
 
 
     <LinearLayout
@@ -26,7 +28,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/output"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout

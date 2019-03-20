@@ -15,7 +15,8 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".checkout.PaymentSuccessEmailReceipt"></activity>
+        <activity android:name=".starter.PleaseSignUp"></activity>
+        <activity android:name=".checkout.PaymentSuccessEmailReceipt" />
         <activity android:name=".checkout.PaymentSuccessNoReceipt" />
         <activity android:name=".checkout.PaymentSuccess" />
         <activity android:name=".Receipt" />

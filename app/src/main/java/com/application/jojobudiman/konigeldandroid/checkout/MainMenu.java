@@ -28,6 +28,7 @@ public class MainMenu extends Fragment {
     Button charge;
     TextView calcoutput;
     Button one, two, three, four, five, six, seven, eight, nine, zero, clear, add;
+    String a;
 
 
     @Override
@@ -50,6 +51,167 @@ public class MainMenu extends Fragment {
         clear = (Button) view.findViewById(R.id.clearbtn);
         add = (Button) view.findViewById(R.id.addbtn);
 
+        final int[] ans = {0};
+        
+        one.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                a = calcoutput.getText().toString();
+                if (ans[0] == 1) {
+                    calcoutput.setText(a + " " + "1");
+                    ans[0] = 0;
+                }
+
+                else {
+
+                    a = a + "1";
+                    calcoutput.setText(a);
+                }
+            }
+        });
+
+        two.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                a = calcoutput.getText().toString();
+                if (ans[0] == 1) {
+                    calcoutput.setText(a + " " + "2");
+                    ans[0] = 0;
+                }
+
+                else {
+                    a = calcoutput.getText().toString();
+                    a = a + "2";
+                    calcoutput.setText(a);
+                }
+            }
+        });
+
+        three.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                a = calcoutput.getText().toString();
+                if (ans[0] == 1) {
+                    calcoutput.setText(a + " " + "3");
+                    ans[0] = 0;
+                }
+
+                else {
+                    a = calcoutput.getText().toString();
+                    a = a + "3";
+                    calcoutput.setText(a);
+                }
+            }
+        });
+
+        four.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                a = calcoutput.getText().toString();
+                if (ans[0] == 1) {
+                    calcoutput.setText(a + " " + "4");
+                    ans[0] = 0;
+                }
+
+                else {
+                    a = calcoutput.getText().toString();
+                    a = a + "4";
+                    calcoutput.setText(a);
+                }
+            }
+        });
+
+        five.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                a = calcoutput.getText().toString();
+                if (ans[0] == 1) {
+                    calcoutput.setText(a + " " + "5");
+                    ans[0] = 0;
+                }
+
+                else {
+                    a = calcoutput.getText().toString();
+                    a = a + "5";
+                    calcoutput.setText(a);
+                }
+            }
+        });
+
+        six.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                a = calcoutput.getText().toString();
+                if (ans[0] == 1) {
+                    calcoutput.setText(a + " " + "6");
+                    ans[0] = 0;
+                }
+
+                else {
+                    a = calcoutput.getText().toString();
+                    a = a + "6";
+                    calcoutput.setText(a);
+                }
+            }
+        });
+
+        seven.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                a = calcoutput.getText().toString();
+                if (ans[0] == 1) {
+                    calcoutput.setText(a + " " + "7");
+                    ans[0] = 0;
+                }
+
+                else {
+                    a = calcoutput.getText().toString();
+                    a = a + "7";
+                    calcoutput.setText(a);
+                }
+            }
+        });
+
+        eight.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                a = calcoutput.getText().toString();
+                if (ans[0] == 1) {
+                    calcoutput.setText(a + " " + "8");
+                    ans[0] = 0;
+                }
+
+                else {
+                    a = calcoutput.getText().toString();
+                    a = a + "8";
+                    calcoutput.setText(a);
+                }
+            }
+        });
+
+        nine.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                a = calcoutput.getText().toString();
+                if (ans[0] == 1) {
+                    calcoutput.setText(a + " " + "9");
+                    ans[0] = 0;
+                }
+
+                else {
+                    a = calcoutput.getText().toString();
+                    a = a + "9";
+                    calcoutput.setText(a);
+                }
+            }
+        });
+
+        zero.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                a = calcoutput.getText().toString();
+                if (ans[0] == 1) {
+                    calcoutput.setText(a + " " + "0");
+                    ans[0] = 0;
+                }
+
+                else {
+                    a = calcoutput.getText().toString();
+                    a = a + "0";
+                    calcoutput.setText(a);
+                }
+            }
+        });
 
         // Inflate the layout for this fragment
         return view;

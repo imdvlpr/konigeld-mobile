@@ -63,7 +63,7 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/buttonrectangle"
         android:fontFamily="@font/dosisthicc"
-        android:text="Charge Rp 340.000"
+        android:text="Charge"
         android:textColor="@color/colorSecondaryText"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

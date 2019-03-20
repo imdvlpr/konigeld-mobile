@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.application.jojobudiman.konigeldandroid.R;
 
@@ -31,6 +32,17 @@ public class SignIn extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String  semail, spass;
+                semail = email.getText().toString();
+                spass = pass.getText().toString();
+
+                if (semail.length() == 0 || spass.length() == 0) {
+                    Toast.makeText(getApplication(), "All fields must be filled!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+
+                }
+
                 Intent i = new Intent(getApplicationContext(), WelcomeText.class);
                 startActivity(i);
             }

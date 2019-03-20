@@ -5,31 +5,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.application.jojobudiman.konigeldandroid.R;
-import com.application.jojobudiman.konigeldandroid.checkout.MainFragment;
 
-public class WelcomeText extends AppCompatActivity {
+public class PleaseSignUp extends AppCompatActivity {
 
-    private Button next;
+    ImageButton bacc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcometext);
+        setContentView(R.layout.activity_please_sign_up);
 
+        bacc = (ImageButton) findViewById(R.id.backmenu);
 
-        next = (Button) findViewById(R.id.nextbtn);
-
-        next.setOnClickListener(new View.OnClickListener() {
+        bacc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainFragment.class);
+                Intent i = new Intent(getApplicationContext(), MenuChoice.class);
                 startActivity(i);
             }
         });
+
 
 
     }
