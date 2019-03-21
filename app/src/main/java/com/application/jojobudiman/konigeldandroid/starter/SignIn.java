@@ -40,11 +40,10 @@ public class SignIn extends AppCompatActivity {
                     Toast.makeText(getApplication(), "All fields must be filled!", Toast.LENGTH_SHORT).show();
                 }
                 else {
-
+                    Intent i = new Intent(getApplicationContext(), WelcomeText.class);
+                    startActivity(i);
                 }
 
-                Intent i = new Intent(getApplicationContext(), WelcomeText.class);
-                startActivity(i);
             }
         });
 

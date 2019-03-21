@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".transactions.IssueRefund">
+
+    <RelativeLayout
+        android:id="@+id/topheader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="left"
+            android:background="@drawable/closemenu" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/menu"
+            android:layout_gravity="center"
+            android:fontFamily="@font/dosisthicc"
+            android:layout_marginLeft="15dp"
+            android:text="Issue Refund"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/menu"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/refundtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/dosisthicc"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:text="AMOUNT TO REFUND"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topheader" />
+
+    <EditText
+        android:id="@+id/refundamount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:ems="10"
+        android:fontFamily="@font/dosisregular"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="25dp"
+        android:inputType="text"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimaryLight"
+        android:textSize="20sp"
+        android:hint="Rp 0.00"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/refundtext" />
+
+    <TextView
+        android:id="@+id/littletext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/dosisregular"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="25dp"
+        android:text="Total refundable amount is Rp 340.000.00"
+        android:textColor="@color/colorPrimary"
+        android:textSize="8sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/refundamount" />
+
+    <TextView
+        android:id="@+id/refundreasontext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/dosisthicc"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:text="REASON TO REFUND"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/littletext" />
+
+    <RadioGroup
+        android:id="@+id/reasonrefund"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="right"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/refundreasontext">
+
+        <RadioButton
+            android:id="@+id/value1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:layoutDirection="rtl"
+            android:fontFamily="@font/dosisregular"
+            android:text="Returned Goods"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:button="@drawable/radiobutton" />
+
+        <RadioButton
+            android:id="@+id/value2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:fontFamily="@font/dosisregular"
+            android:text="Cancelled Order"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:button="@drawable/radiobutton" />
+
+        <RadioButton
+            android:id="@+id/value3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:fontFamily="@font/dosisregular"
+            android:text="Accidental Charge"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:button="@drawable/radiobutton" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/refundbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonrectangle"
+        android:fontFamily="@font/dosisthicc"
+        android:textColor="@color/colorSecondaryText"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        android:text="Refund"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reasonrefund" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

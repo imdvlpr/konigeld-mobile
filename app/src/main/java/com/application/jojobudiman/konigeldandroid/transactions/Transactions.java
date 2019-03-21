@@ -30,7 +30,6 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class Transactions extends Fragment {
-
     public Transactions() {
 
 
@@ -56,9 +55,9 @@ public class Transactions extends Fragment {
         menubtn = (ImageButton) view.findViewById(R.id.menu);
         receipts = (RecyclerView) view.findViewById(R.id.receiptList);
         receipts.setHasFixedSize(true);
-
         list.addAll(ReceiptData.getListData());
         showRecyclerList();
+
 
 
         menubtn.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +78,7 @@ public class Transactions extends Fragment {
         ReceiptAdapter receiptadapter = new ReceiptAdapter(getActivity()); // Create Adapter object that extends RecyclerViewAdapter
         receiptadapter.setReceiptList(list); // Call setter method dri ArrayList yg menampung data sbg parameter
         receipts.setAdapter(receiptadapter); // Set adapter ke RecyclerView
+
         // Call itemclicksupport class and static method addto,
         // sehingga attach event click ke item yang ada di RecyclerView
         /*ItemClickSupport.addTo(receipts).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -90,6 +90,12 @@ public class Transactions extends Fragment {
             }
         });*/
     }
+
+    /*public void onItemClick(int position) {
+        // The onClick implementation of the RecyclerView item click
+        Intent i = new Intent(getActivity(), ReceiptDetails.class);
+        startActivity(i);
+    }*/
 
     /*private void showSelectedReceipt(Receipt receipt){
         // Toast message untuk menunjukkan kamu memilih nama apa

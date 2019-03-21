@@ -15,7 +15,16 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".starter.PleaseSignUp"></activity>
+        <activity android:name=".products.ProductsList"></activity>
+        <activity android:name=".transactions.IssueRefund" />
+        <activity android:name=".transactions.NewReceipt" />
+        <activity android:name=".transactions.ReceiptDetails"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".starter.PleaseSignUp" />
         <activity android:name=".checkout.PaymentSuccessEmailReceipt" />
         <activity android:name=".checkout.PaymentSuccessNoReceipt" />
         <activity android:name=".checkout.PaymentSuccess" />

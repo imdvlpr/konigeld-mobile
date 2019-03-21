@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.application.jojobudiman.konigeldandroid.R;
@@ -22,6 +24,8 @@ public class Products extends Fragment {
 
         // Required empty public constructor
     }
+
+    ImageButton menubtn;
     TextView prod, cat, mod, disc;
 
     @Override
@@ -30,6 +34,7 @@ public class Products extends Fragment {
 
 
         View view = inflater.inflate(R.layout.activity_products, container, false);
+        menubtn = (ImageButton) view.findViewById(R.id.menu);
 
         prod = (TextView) view.findViewById(R.id.allproducts);
         cat = (TextView) view.findViewById(R.id.categories);
@@ -40,10 +45,44 @@ public class Products extends Fragment {
         prod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(getContext(), ProductsList.class);
+                startActivity(i);
+            }
+        });
+
+        cat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent i = new Intent(getContext(), Products.class);
                 startActivity(i);
             }
         });
+
+        mod.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), Products.class);
+                startActivity(i);
+            }
+        });
+
+        disc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), Products.class);
+                startActivity(i);
+            }
+        });
+
+        menubtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer(Gravity.LEFT);
+            }
+        });
+
+
+
 
         // Inflate the layout for this fragment
         return view;
