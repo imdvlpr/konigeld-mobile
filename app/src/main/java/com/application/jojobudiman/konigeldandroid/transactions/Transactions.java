@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,12 +25,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.jojobudiman.konigeldandroid.R;
+import com.application.jojobudiman.konigeldandroid.checkout.CustomMenu;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class Transactions extends Fragment {
+public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListener {
     public Transactions() {
 
 
@@ -49,7 +51,7 @@ public class Transactions extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.activity_transactions, container, false);
-
+        Fragment fragment = new Transactions();
         final DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
 
         menubtn = (ImageButton) view.findViewById(R.id.menu);
@@ -57,6 +59,7 @@ public class Transactions extends Fragment {
         receipts.setHasFixedSize(true);
         list.addAll(ReceiptData.getListData());
         showRecyclerList();
+
 
 
 
@@ -75,7 +78,7 @@ public class Transactions extends Fragment {
 
     private void showRecyclerList() {
         receipts.setLayoutManager(new LinearLayoutManager(getActivity())); // Vertical LinearLayout is the type of RecyclerView
-        ReceiptAdapter receiptadapter = new ReceiptAdapter(getActivity()); // Create Adapter object that extends RecyclerViewAdapter
+        ReceiptAdapter receiptadapter = new ReceiptAdapter(getActivity(), this); // Create Adapter object that extends RecyclerViewAdapter
         receiptadapter.setReceiptList(list); // Call setter method dri ArrayList yg menampung data sbg parameter
         receipts.setAdapter(receiptadapter); // Set adapter ke RecyclerView
 
@@ -90,6 +93,14 @@ public class Transactions extends Fragment {
             }
         });*/
     }
+
+    @Override
+    public void onNoteClick(int position) {
+        list.get(position);
+        Intent i = new Intent(getActivity(), ReceiptDetails.class);
+        startActivity(i);
+    }
+
 
     /*public void onItemClick(int position) {
         // The onClick implementation of the RecyclerView item click

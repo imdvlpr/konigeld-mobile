@@ -102,6 +102,8 @@ public class MainFragment extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_settings) {
             title = "Settings";
             fragment = new AccountSettings();
+        } else if (id== R.id.backmenu) {
+
         }
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -129,7 +131,17 @@ public class MainFragment extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            super.onBackPressed();
+            //additional code
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
     }
+
 
 }
 

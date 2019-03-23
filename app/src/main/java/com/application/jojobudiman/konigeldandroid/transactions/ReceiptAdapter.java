@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.application.jojobudiman.konigeldandroid.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,14 +24,18 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.Category
         return ReceiptList;
     }
 
+    private OnNoteListener notes;
+
+
     public void setReceiptList(ArrayList<Receipt> ReceiptList) {
         this.ReceiptList = ReceiptList;
     }
 
     private ArrayList<Receipt> ReceiptList;
 
-    public ReceiptAdapter(Context context) {
+    public ReceiptAdapter(Context context, OnNoteListener notes) {
         this.context = context;
+        this.notes = notes;
     }
 
     /*public interface OnItemClicked {
@@ -41,7 +46,7 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.Category
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_receipts, parent, false);
-        return new CategoryViewHolder(itemRow);
+        return new CategoryViewHolder(itemRow, notes);
     }
 
     @Override
@@ -66,17 +71,32 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.Category
         return getReceiptList().size();
     }
 
-    class CategoryViewHolder extends RecyclerView.ViewHolder {
+    class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView rDate;
         TextView rTime;
         TextView rTotal;
+        OnNoteListener note;
 
-        CategoryViewHolder(View itemView) {
+        CategoryViewHolder(View itemView, OnNoteListener note) {
             super(itemView);
             rDate = itemView.findViewById(R.id.date);
             rTime = itemView.findViewById(R.id.time);
             rTotal = itemView.findViewById(R.id.amount);
+            this.note = note;
+
+            itemView.setOnClickListener(this);
+
         }
+
+        @Override
+        public void onClick(View view) {
+            note.onNoteClick(getAdapterPosition());
+        }
+
+    }
+
+    public interface OnNoteListener {
+        void onNoteClick(int position);
     }
 
 

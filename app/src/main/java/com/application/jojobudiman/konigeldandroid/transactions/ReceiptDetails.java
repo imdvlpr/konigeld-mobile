@@ -2,6 +2,9 @@ package com.application.jojobudiman.konigeldandroid.transactions;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +20,7 @@ public class ReceiptDetails extends AppCompatActivity {
 
     ImageButton bacc;
     Button newrec, refund;
+    ViewPager viewPager;
 
 
 
@@ -24,6 +28,7 @@ public class ReceiptDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt_details);
+
 
         newrec = (Button) findViewById(R.id.newreceipt);
         refund = (Button) findViewById(R.id.issuerefund);
@@ -33,8 +38,7 @@ public class ReceiptDetails extends AppCompatActivity {
         bacc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Transactions.class);
-                startActivity(i);
+                finish();
             }
         });
 
@@ -55,5 +59,13 @@ public class ReceiptDetails extends AppCompatActivity {
         });
 
 
+
+
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        finish();
     }
 }

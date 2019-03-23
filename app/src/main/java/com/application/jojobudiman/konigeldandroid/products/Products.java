@@ -3,6 +3,8 @@ package com.application.jojobudiman.konigeldandroid.products;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +19,10 @@ import android.widget.TextView;
 import com.application.jojobudiman.konigeldandroid.R;
 import com.application.jojobudiman.konigeldandroid.checkout.PaymentSuccessEmailReceipt;
 
+import java.util.ArrayList;
+
 public class Products extends Fragment {
+
 
     public Products() {
 
@@ -41,6 +46,7 @@ public class Products extends Fragment {
         mod = (TextView) view.findViewById(R.id.modifiers);
         disc = (TextView) view.findViewById(R.id.discounts);
         final DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+
 
         prod.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,4 +94,5 @@ public class Products extends Fragment {
         return view;
         //return inflater.inflate(R.layout.fragment_home, container, false);
     }
+
 }
