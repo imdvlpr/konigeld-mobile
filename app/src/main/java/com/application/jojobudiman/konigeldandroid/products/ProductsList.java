@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.application.jojobudiman.konigeldandroid.R;
 
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 
 public class ProductsList extends AppCompatActivity {
 
+    ImageButton menubtn;
     private RecyclerView products;
     private ArrayList<Product> list = new ArrayList<>();
 
@@ -20,10 +23,18 @@ public class ProductsList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_list);
 
+        menubtn = (ImageButton) findViewById(R.id.menu);
         products = (RecyclerView) findViewById(R.id.productList);
         products.setHasFixedSize(true);
         list.addAll(ProductData.getListData());
         showRecylerList();
+
+        menubtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 

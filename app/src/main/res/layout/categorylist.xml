@@ -9,14 +9,14 @@
 
 
     <LinearLayout
-        android:id="@+id/products_listt"
+        android:id="@+id/category_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true">
 
         <TextView
-            android:id="@+id/producttext"
+            android:id="@+id/categoryname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/dosisthicc"
@@ -25,20 +25,6 @@
             android:paddingTop="5dp"
             android:text="Kopi Jovan"
             android:background="@drawable/productcontainer"
-            android:textSize="12sp"
-            android:textColor="@color/colorPrimary" />
-
-        <TextView
-            android:id="@+id/productprice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/dosisthicc"
-            android:layout_weight="0.65"
-            android:paddingTop="5dp"
-            android:paddingRight="25dp"
-            android:text="Rp 20.000.00"
-            android:textAlignment="textEnd"
-            android:background="@drawable/koniproductline"
             android:textSize="12sp"
             android:textColor="@color/colorPrimary" />
 

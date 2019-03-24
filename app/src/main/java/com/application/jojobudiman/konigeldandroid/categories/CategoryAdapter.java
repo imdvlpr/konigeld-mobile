@@ -1,82 +1,95 @@
-package com.application.jojobudiman.konigeldandroid.products;
+package com.application.jojobudiman.konigeldandroid.categories;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.application.jojobudiman.konigeldandroid.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.CategoryViewHolder> {
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
     /*private OnItemClicked onClick;*/
     private Context context;
-    private ArrayList<Product> getProductLists() {
-        return ProductsList;
+    private ArrayList<Category> getCategoryList() {
+        return CategoryList;
     }
+
     private OnNoteListener notes;
 
-    public void setProductsList(ArrayList<Product> ProductsList) {
-        this.ProductsList = ProductsList;
+
+    public void setCategoryList(ArrayList<Category> CategoryList) {
+        this.CategoryList = CategoryList;
     }
 
-    private ArrayList<Product> ProductsList;
+    private ArrayList<Category> CategoryList;
 
-    public ProductListAdapter(Context context) {
+    public CategoryAdapter(Context context) {
         this.context = context;
         this.notes = notes;
     }
 
+    /*public interface OnItemClicked {
+        void onItemClick(int position);
+    }*/
+
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.productlist, parent, false);
+        View itemRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.categorylist, parent, false);
         return new CategoryViewHolder(itemRow, notes);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, final int position) {
-        holder.pName.setText(getProductLists().get(position).getName());
-        holder.pPrice.setText(getProductLists().get(position).getPrice());
+        holder.dName.setText(getCategoryList().get(position).getName());
+
+        /*holder.rDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClick.onItemClick(position);
+            }
+        });*/
+
     }
 
 
 
     @Override
     public int getItemCount() {
-        return getProductLists().size();
+        return getCategoryList().size();
     }
 
     class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView pName;
-        TextView pPrice;
+        TextView dName;
         OnNoteListener note;
 
         CategoryViewHolder(View itemView, OnNoteListener note) {
             super(itemView);
-            pName = itemView.findViewById(R.id.producttext);
-            pPrice = itemView.findViewById(R.id.productprice);
+            dName = itemView.findViewById(R.id.categoryname);
             this.note = note;
+
             itemView.setOnClickListener(this);
+
         }
 
         @Override
         public void onClick(View view) {
             note.onNoteClick(getAdapterPosition());
         }
+
     }
 
     public interface OnNoteListener {
         void onNoteClick(int position);
     }
+
 
 
 }

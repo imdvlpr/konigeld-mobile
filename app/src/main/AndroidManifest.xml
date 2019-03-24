@@ -15,16 +15,18 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".products.ProductsList"
+        <activity android:name=".discounts.Discounts"></activity>
+        <activity
+            android:name=".products.ProductsList"
             android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".transactions.IssueRefund" />
         <activity android:name=".transactions.NewReceipt" />
-        <activity android:name=".transactions.ReceiptDetails"
+        <activity
+            android:name=".transactions.ReceiptDetails"
             android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

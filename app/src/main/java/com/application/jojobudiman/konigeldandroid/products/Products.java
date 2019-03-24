@@ -17,7 +17,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.application.jojobudiman.konigeldandroid.R;
+import com.application.jojobudiman.konigeldandroid.categories.Categories;
 import com.application.jojobudiman.konigeldandroid.checkout.PaymentSuccessEmailReceipt;
+import com.application.jojobudiman.konigeldandroid.discounts.Discounts;
+import com.application.jojobudiman.konigeldandroid.modifiers.ModifiersList;
 
 import java.util.ArrayList;
 
@@ -59,7 +62,7 @@ public class Products extends Fragment {
         cat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), Products.class);
+                Intent i = new Intent(getContext(), Categories.class);
                 startActivity(i);
             }
         });
@@ -67,7 +70,7 @@ public class Products extends Fragment {
         mod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), Products.class);
+                Intent i = new Intent(getContext(), ModifiersList.class);
                 startActivity(i);
             }
         });
@@ -75,7 +78,7 @@ public class Products extends Fragment {
         disc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(), Products.class);
+                Intent i = new Intent(getContext(), Discounts.class);
                 startActivity(i);
             }
         });
