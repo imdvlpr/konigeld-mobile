@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.application.jojobudiman.konigeldandroid.R;
@@ -27,6 +31,7 @@ public class AccountSettings extends Fragment {
 
     ImageButton menubtn;
     Button logout;
+    Dialog popup;
 
 
 
@@ -40,11 +45,12 @@ public class AccountSettings extends Fragment {
 
         menubtn = (ImageButton) view.findViewById(R.id.menu);
         logout = (Button) view.findViewById(R.id.logout);
+        popup = new Dialog(getContext());
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), SignIn.class);
+                showPopUp();
             }
         });
 
@@ -59,4 +65,32 @@ public class AccountSettings extends Fragment {
         return view;
         //return inflater.inflate(R.layout.fragment_home, container, false);
     }
+
+    private void showPopUp() {
+        ImageButton closelog;
+        LinearLayout yeslog, nolog;
+        popup.setContentView(R.layout.logoutpopup);
+
+        closelog = (ImageButton) popup.findViewById(R.id.closebtn);
+        yeslog = (LinearLayout) popup.findViewById(R.id.logoutyes);
+        nolog = (LinearLayout) popup.findViewById(R.id.logoutno);
+
+        closelog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup.dismiss();
+            }
+        });
+
+        nolog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup.dismiss();
+            }
+        });
+
+        popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popup.show();
+    }
+
 }

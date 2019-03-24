@@ -51,6 +51,7 @@ public class MainMenu extends Fragment {
         clear = (Button) view.findViewById(R.id.clearbtn);
         add = (Button) view.findViewById(R.id.addbtn);
 
+
         final int[] ans = {0};
         
         one.setOnClickListener(new View.OnClickListener() {

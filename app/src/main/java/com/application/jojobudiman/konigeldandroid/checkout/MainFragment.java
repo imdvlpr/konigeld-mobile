@@ -1,6 +1,9 @@
 package com.application.jojobudiman.konigeldandroid.checkout;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -38,7 +42,9 @@ public class MainFragment extends AppCompatActivity implements NavigationView.On
     RelativeLayout topHeader;
     TabLayout selectButton;
     Toolbar toolbar;
+    TextView logoutbtn;
     DrawerLayout drawer;
+
     NavigationView navigationView;
     private Fragment fragment = null;
     private FragmentManager fragmentManager;
@@ -53,18 +59,21 @@ public class MainFragment extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_sidebar_menu);
 
         drawer = findViewById(R.id.drawer_layout);
-
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragment = new CustomMenu();
         fragmentTransaction.replace(R.id.main_container, fragment, "Test1");
         fragmentTransaction.commit();
 
+        logoutbtn = (TextView) findViewById(R.id.logout);
+
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         final NavigationView navigationView = findViewById(R.id.nav_view);
         final ImageButton menu = (ImageButton) findViewById(R.id.hamburger);
+
+
 
     }
 
@@ -141,6 +150,7 @@ public class MainFragment extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().popBackStack();
         }
     }
+
 
 
 }
