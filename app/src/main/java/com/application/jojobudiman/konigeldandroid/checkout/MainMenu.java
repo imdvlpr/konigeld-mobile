@@ -2,7 +2,9 @@ package com.application.jojobudiman.konigeldandroid.checkout;
 
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -23,7 +25,7 @@ public class MainMenu extends Fragment {
 
         // Required empty public constructor
     }
-
+    SharedPreferences sess;
     ImageButton menu;
     Button charge;
     TextView calcoutput;
@@ -50,22 +52,30 @@ public class MainMenu extends Fragment {
         zero = (Button) view.findViewById(R.id.zerobtn);
         clear = (Button) view.findViewById(R.id.clearbtn);
         add = (Button) view.findViewById(R.id.addbtn);
+        sess = this.getActivity().getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
 
 
-        final int[] ans = {0};
+        final int[] ans = {1};
+
         
         one.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                a = calcoutput.getText().toString();
-                if (ans[0] == 1) {
-                    calcoutput.setText(a + " " + "1");
-                    ans[0] = 0;
+                a =  calcoutput.getText().toString();
+
+                if (ans[0] == 1) { //
+                    calcoutput.setText("Rp" + " " + "1");
+                    ans[0] = 0; //
                 }
 
                 else {
-
-                    a = a + "1";
-                    calcoutput.setText(a);
+                    int length = calcoutput.getText().length();
+                    if(length == 9) {
+                        calcoutput.setText("Rp 999999");
+                    }
+                    else {
+                        a = a + "1";
+                        calcoutput.setText(a);
+                    }
                 }
             }
         });
@@ -74,14 +84,22 @@ public class MainMenu extends Fragment {
             public void onClick(View arg0) {
                 a = calcoutput.getText().toString();
                 if (ans[0] == 1) {
-                    calcoutput.setText(a + " " + "2");
+                    a = "Rp";
+                    calcoutput.setText("Rp" + " " + "2");
                     ans[0] = 0;
                 }
 
+
+
                 else {
-                    a = calcoutput.getText().toString();
-                    a = a + "2";
-                    calcoutput.setText(a);
+                    int length = calcoutput.getText().length();
+                    if(length == 9) {
+                        calcoutput.setText("Rp 999999");
+                    }
+                    else {
+                        a = a + "2";
+                        calcoutput.setText(a);
+                    }
                 }
             }
         });
@@ -90,14 +108,20 @@ public class MainMenu extends Fragment {
             public void onClick(View arg0) {
                 a = calcoutput.getText().toString();
                 if (ans[0] == 1) {
-                    calcoutput.setText(a + " " + "3");
+                    a = "Rp";
+                    calcoutput.setText("Rp" + " " + "3");
                     ans[0] = 0;
                 }
 
                 else {
-                    a = calcoutput.getText().toString();
-                    a = a + "3";
-                    calcoutput.setText(a);
+                    int length = calcoutput.getText().length();
+                    if(length == 9) {
+                        calcoutput.setText("Rp 999999");
+                    }
+                    else {
+                        a = a + "3";
+                        calcoutput.setText(a);
+                    }
                 }
             }
         });
@@ -106,14 +130,20 @@ public class MainMenu extends Fragment {
             public void onClick(View arg0) {
                 a = calcoutput.getText().toString();
                 if (ans[0] == 1) {
-                    calcoutput.setText(a + " " + "4");
+                    a = "Rp";
+                    calcoutput.setText("Rp" + " " + "4");
                     ans[0] = 0;
                 }
 
                 else {
-                    a = calcoutput.getText().toString();
-                    a = a + "4";
-                    calcoutput.setText(a);
+                    int length = calcoutput.getText().length();
+                    if(length == 9) {
+                        calcoutput.setText("Rp 999999");
+                    }
+                    else {
+                        a = a + "4";
+                        calcoutput.setText(a);
+                    }
                 }
             }
         });
@@ -122,14 +152,20 @@ public class MainMenu extends Fragment {
             public void onClick(View arg0) {
                 a = calcoutput.getText().toString();
                 if (ans[0] == 1) {
-                    calcoutput.setText(a + " " + "5");
+                    a = "Rp";
+                    calcoutput.setText("Rp" + " " + "5");
                     ans[0] = 0;
                 }
 
                 else {
-                    a = calcoutput.getText().toString();
-                    a = a + "5";
-                    calcoutput.setText(a);
+                    int length = calcoutput.getText().length();
+                    if(length == 9) {
+                        calcoutput.setText("Rp 999999");
+                    }
+                    else {
+                        a = a + "5";
+                        calcoutput.setText(a);
+                    }
                 }
             }
         });
@@ -138,14 +174,20 @@ public class MainMenu extends Fragment {
             public void onClick(View arg0) {
                 a = calcoutput.getText().toString();
                 if (ans[0] == 1) {
-                    calcoutput.setText(a + " " + "6");
+                    a = "Rp";
+                    calcoutput.setText("Rp" + " " + "6");
                     ans[0] = 0;
                 }
 
                 else {
-                    a = calcoutput.getText().toString();
-                    a = a + "6";
-                    calcoutput.setText(a);
+                    int length = calcoutput.getText().length();
+                    if(length == 9) {
+                        calcoutput.setText("Rp 999999");
+                    }
+                    else {
+                        a = a + "6";
+                        calcoutput.setText(a);
+                    }
                 }
             }
         });
@@ -154,14 +196,20 @@ public class MainMenu extends Fragment {
             public void onClick(View arg0) {
                 a = calcoutput.getText().toString();
                 if (ans[0] == 1) {
-                    calcoutput.setText(a + " " + "7");
+                    a = "Rp";
+                    calcoutput.setText("Rp" + " " + "7");
                     ans[0] = 0;
                 }
 
                 else {
-                    a = calcoutput.getText().toString();
-                    a = a + "7";
-                    calcoutput.setText(a);
+                    int length = calcoutput.getText().length();
+                    if(length == 9) {
+                        calcoutput.setText("Rp 999999");
+                    }
+                    else {
+                        a = a + "7";
+                        calcoutput.setText(a);
+                    }
                 }
             }
         });
@@ -170,14 +218,20 @@ public class MainMenu extends Fragment {
             public void onClick(View arg0) {
                 a = calcoutput.getText().toString();
                 if (ans[0] == 1) {
-                    calcoutput.setText(a + " " + "8");
+                    a = "Rp";
+                    calcoutput.setText("Rp" + " " + "8");
                     ans[0] = 0;
                 }
 
                 else {
-                    a = calcoutput.getText().toString();
-                    a = a + "8";
-                    calcoutput.setText(a);
+                    int length = calcoutput.getText().length();
+                    if(length == 9) {
+                        calcoutput.setText("Rp 999999");
+                    }
+                    else {
+                        a = a + "8";
+                        calcoutput.setText(a);
+                    }
                 }
             }
         });
@@ -186,14 +240,20 @@ public class MainMenu extends Fragment {
             public void onClick(View arg0) {
                 a = calcoutput.getText().toString();
                 if (ans[0] == 1) {
-                    calcoutput.setText(a + " " + "9");
+                    a = "Rp";
+                    calcoutput.setText("Rp" + " " + "9");
                     ans[0] = 0;
                 }
 
                 else {
-                    a = calcoutput.getText().toString();
-                    a = a + "9";
-                    calcoutput.setText(a);
+                    int length = calcoutput.getText().length();
+                    if(length == 9) {
+                        calcoutput.setText("Rp 999999");
+                    }
+                    else {
+                        a = a + "9";
+                        calcoutput.setText(a);
+                    }
                 }
             }
         });
@@ -202,15 +262,35 @@ public class MainMenu extends Fragment {
             public void onClick(View arg0) {
                 a = calcoutput.getText().toString();
                 if (ans[0] == 1) {
-                    calcoutput.setText(a + " " + "0");
+                    a = "Rp";
+                    calcoutput.setText("Rp" + " " + "0");
                     ans[0] = 0;
                 }
 
                 else {
-                    a = calcoutput.getText().toString();
-                    a = a + "0";
-                    calcoutput.setText(a);
+                    int length = calcoutput.getText().length();
+                    if(length == 9) {
+                        calcoutput.setText("Rp 999999");
+                    }
+                    else {
+                        a = a + "0";
+                        calcoutput.setText(a);
+                    }
                 }
+            }
+        });
+
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calcoutput.setText("Rp 0.00");
+            }
+        });
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

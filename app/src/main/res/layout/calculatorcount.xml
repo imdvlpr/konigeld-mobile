@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".checkout.MainMenu">
 
+
     <TextView
         android:id="@+id/output"
         android:layout_width="match_parent"
@@ -13,7 +14,9 @@
         android:fontFamily="@font/dosisthicc"
         android:gravity="center_vertical|end"
         android:paddingRight="30dp"
-        android:text="Rp 0"
+        android:text="Rp 0.00"
+        android:maxLength="9"
+        android:textColorHint="@color/colorPrimary"
         android:textAlignment="textEnd"
         android:textColor="@color/colorPrimary"
         android:textSize="36sp"
