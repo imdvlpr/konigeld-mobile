@@ -35,7 +35,7 @@
             android:layout_toEndOf="@+id/menu"
             android:layout_centerVertical="true"
             android:fontFamily="@font/dosisthicc"
-            android:text="Rp xxx Cash"
+            android:text="Rp 340.000 Cash"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             />
@@ -98,7 +98,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:text="Rp 300.000" />
+            android:text="Rp 340.000" />
 
         <Button
             android:id="@+id/twobtn"

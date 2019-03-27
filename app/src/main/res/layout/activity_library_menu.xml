@@ -79,41 +79,6 @@
             app:layout_constraintTop_toBottomOf="@+id/searchSale"
             />
 
-        <TextView
-            android:id="@+id/discounts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:fontFamily="@font/dosisthicc"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center_vertical"
-            android:text="Discounts"
-            android:background="@drawable/borderbottomgap"
-            android:drawableRight="@drawable/rightbtn"
-            android:padding="20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewcategory"
-        />
-
-        <TextView
-            android:id="@+id/allitems"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:fontFamily="@font/dosisthicc"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center_vertical"
-            android:text="All Products"
-            android:background="@drawable/borderbottomgap"
-            android:drawableRight="@drawable/rightbtn"
-            android:padding="20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewcategory"
-            />
 
     </LinearLayout>
 

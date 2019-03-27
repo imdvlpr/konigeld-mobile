@@ -2,27 +2,27 @@ package com.application.jojobudiman.konigeldandroid.transactions;
 
 import java.util.ArrayList;
 
-public class ReceiptData {
+public class ItemData {
     // Data2 yg akan didisplay
     public static String[][] data = new String[][]{
-            {"TUESDAY, 26 MARCH 2019", "Rp 300.000", "12:15"},
-            {"MONDAY, 25 MARCH 2019", "Rp 250.000", "12:10"}
+            {"Kopi Jovan", "x17", "Rp 20.000" }
     };
 
     // Method untuk return arrayList yg isinya data
-    public static ArrayList<Receipt> getListData(){
-        ArrayList<Receipt> list = new ArrayList<>();
+    public static ArrayList<Item> getListData(){
+        ArrayList<Item> list = new ArrayList<>();
         // For loop untuk melihat pecahan dr String Array
         for (String[] aData : data) {
-            Receipt receipt = new Receipt();
+            Item item = new Item();
             // Set pecahan dr String Array ke variable di Receipt
-            receipt.setDate(aData[0]);
-            receipt.setTotal(aData[1]);
-            receipt.setTime(aData[2]);
+            item.setName(aData[0]);
+            item.setQuantity(aData[1]);
+            item.setPrice(aData[2]);
             // Add Receipt object ke ArrayList
-            list.add(receipt);
+            list.add(item);
         }
         return list;
     }
 
 }
+

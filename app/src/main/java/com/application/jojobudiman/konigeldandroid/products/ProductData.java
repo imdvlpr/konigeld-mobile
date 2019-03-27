@@ -5,8 +5,11 @@ import java.util.ArrayList;
 public class ProductData {
     // Data2 yg akan didisplay
     public static String[][] data = new String[][]{
-            {"Kopi Jovan", "Rp 20.000.00"},
-            {"Kopi Enola", "Rp 20.000.00"}
+            {"Product A", "Rp 20.000"},
+            {"Product B", "Rp 25.000"},
+            {"Product C", "Rp 30.000"},
+            {"Product D", "Rp 35.000"},
+            {"Product E", "Rp 40.000"}
     };
 
     // Method untuk return arrayList yg isinya data

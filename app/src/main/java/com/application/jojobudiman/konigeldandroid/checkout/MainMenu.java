@@ -283,7 +283,11 @@ public class MainMenu extends Fragment {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calcoutput.setText("Rp 0.00");
+
+                if (ans[0] == 1) { //
+                    calcoutput.setText("Rp" + " " + "0.00");
+                    ans[0] = 0; //
+                }
             }
         });
 
