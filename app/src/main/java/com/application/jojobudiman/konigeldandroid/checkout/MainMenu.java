@@ -53,7 +53,9 @@ public class MainMenu extends Fragment {
         clear = (Button) view.findViewById(R.id.clearbtn);
         add = (Button) view.findViewById(R.id.addbtn);
         sess = this.getActivity().getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
-
+        SharedPreferences.Editor as = sess.edit();
+        as.putString("total", "Rp ");
+        as.apply();
 
         final int[] ans = {1};
 
@@ -64,17 +66,26 @@ public class MainMenu extends Fragment {
 
                 if (ans[0] == 1) { //
                     calcoutput.setText("Rp" + " " + "1");
+                    SharedPreferences.Editor as = sess.edit();
+                    as.putString("total", "Rp 1");
                     ans[0] = 0; //
+                    as.apply();
                 }
 
                 else {
                     int length = calcoutput.getText().length();
                     if(length == 9) {
                         calcoutput.setText("Rp 999999");
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", "Rp 999999");
+                        as.apply();
                     }
                     else {
                         a = a + "1";
                         calcoutput.setText(a);
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", a);
+                        as.apply();
                     }
                 }
             }
@@ -87,6 +98,9 @@ public class MainMenu extends Fragment {
                     a = "Rp";
                     calcoutput.setText("Rp" + " " + "2");
                     ans[0] = 0;
+                    SharedPreferences.Editor as = sess.edit();
+                    as.putString("total", "Rp 2");
+                    as.apply();
                 }
 
 
@@ -95,10 +109,16 @@ public class MainMenu extends Fragment {
                     int length = calcoutput.getText().length();
                     if(length == 9) {
                         calcoutput.setText("Rp 999999");
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", "Rp 999999");
+                        as.apply();
                     }
                     else {
                         a = a + "2";
                         calcoutput.setText(a);
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", a);
+                        as.apply();
                     }
                 }
             }
@@ -111,16 +131,25 @@ public class MainMenu extends Fragment {
                     a = "Rp";
                     calcoutput.setText("Rp" + " " + "3");
                     ans[0] = 0;
+                    SharedPreferences.Editor as = sess.edit();
+                    as.putString("total", "Rp 3");
+                    as.apply();
                 }
 
                 else {
                     int length = calcoutput.getText().length();
                     if(length == 9) {
                         calcoutput.setText("Rp 999999");
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", "Rp 999999");
+                        as.apply();
                     }
                     else {
                         a = a + "3";
                         calcoutput.setText(a);
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", a);
+                        as.apply();
                     }
                 }
             }
@@ -133,16 +162,25 @@ public class MainMenu extends Fragment {
                     a = "Rp";
                     calcoutput.setText("Rp" + " " + "4");
                     ans[0] = 0;
+                    SharedPreferences.Editor as = sess.edit();
+                    as.putString("total", "Rp 4");
+                    as.apply();
                 }
 
                 else {
                     int length = calcoutput.getText().length();
                     if(length == 9) {
                         calcoutput.setText("Rp 999999");
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", "Rp 999999");
+                        as.apply();
                     }
                     else {
                         a = a + "4";
                         calcoutput.setText(a);
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", a);
+                        as.apply();
                     }
                 }
             }
@@ -155,16 +193,25 @@ public class MainMenu extends Fragment {
                     a = "Rp";
                     calcoutput.setText("Rp" + " " + "5");
                     ans[0] = 0;
+                    SharedPreferences.Editor as = sess.edit();
+                    as.putString("total", "Rp 5");
+                    as.apply();
                 }
 
                 else {
                     int length = calcoutput.getText().length();
                     if(length == 9) {
                         calcoutput.setText("Rp 999999");
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", "Rp 999999");
+                        as.apply();
                     }
                     else {
                         a = a + "5";
                         calcoutput.setText(a);
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", a);
+                        as.apply();
                     }
                 }
             }
@@ -177,16 +224,25 @@ public class MainMenu extends Fragment {
                     a = "Rp";
                     calcoutput.setText("Rp" + " " + "6");
                     ans[0] = 0;
+                    SharedPreferences.Editor as = sess.edit();
+                    as.putString("total", "Rp 6");
+                    as.apply();
                 }
 
                 else {
                     int length = calcoutput.getText().length();
                     if(length == 9) {
                         calcoutput.setText("Rp 999999");
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", "Rp 999999");
+                        as.apply();
                     }
                     else {
                         a = a + "6";
                         calcoutput.setText(a);
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", a);
+                        as.apply();
                     }
                 }
             }
@@ -199,16 +255,25 @@ public class MainMenu extends Fragment {
                     a = "Rp";
                     calcoutput.setText("Rp" + " " + "7");
                     ans[0] = 0;
+                    SharedPreferences.Editor as = sess.edit();
+                    as.putString("total", "Rp 7");
+                    as.apply();
                 }
 
                 else {
                     int length = calcoutput.getText().length();
                     if(length == 9) {
                         calcoutput.setText("Rp 999999");
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", "Rp 999999");
+                        as.apply();
                     }
                     else {
                         a = a + "7";
                         calcoutput.setText(a);
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", a);
+                        as.apply();
                     }
                 }
             }
@@ -221,16 +286,25 @@ public class MainMenu extends Fragment {
                     a = "Rp";
                     calcoutput.setText("Rp" + " " + "8");
                     ans[0] = 0;
+                    SharedPreferences.Editor as = sess.edit();
+                    as.putString("total", "Rp 8");
+                    as.apply();
                 }
 
                 else {
                     int length = calcoutput.getText().length();
                     if(length == 9) {
                         calcoutput.setText("Rp 999999");
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", "Rp 999999");
+                        as.apply();
                     }
                     else {
                         a = a + "8";
                         calcoutput.setText(a);
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", a);
+                        as.apply();
                     }
                 }
             }
@@ -243,16 +317,25 @@ public class MainMenu extends Fragment {
                     a = "Rp";
                     calcoutput.setText("Rp" + " " + "9");
                     ans[0] = 0;
+                    SharedPreferences.Editor as = sess.edit();
+                    as.putString("total", "Rp 9");
+                    as.apply();
                 }
 
                 else {
                     int length = calcoutput.getText().length();
                     if(length == 9) {
                         calcoutput.setText("Rp 999999");
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", "Rp 999999");
+                        as.apply();
                     }
                     else {
                         a = a + "9";
                         calcoutput.setText(a);
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", a);
+                        as.apply();
                     }
                 }
             }
@@ -265,16 +348,25 @@ public class MainMenu extends Fragment {
                     a = "Rp";
                     calcoutput.setText("Rp" + " " + "0");
                     ans[0] = 0;
+                    SharedPreferences.Editor as = sess.edit();
+                    as.putString("total", "Rp 0");
+                    as.apply();
                 }
 
                 else {
                     int length = calcoutput.getText().length();
                     if(length == 9) {
                         calcoutput.setText("Rp 999999");
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", "Rp 999999");
+                        as.apply();
                     }
                     else {
                         a = a + "0";
                         calcoutput.setText(a);
+                        SharedPreferences.Editor as = sess.edit();
+                        as.putString("total", a);
+                        as.apply();
                     }
                 }
             }
@@ -285,6 +377,8 @@ public class MainMenu extends Fragment {
             public void onClick(View v) {
                 calcoutput.setText("Rp" + " " + "0.00");
                 ans[0] = 1;
+                SharedPreferences.Editor as = sess.edit();
+                as.putString("total", "Rp 0");
             }
         });
 
