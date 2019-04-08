@@ -22,7 +22,6 @@ import android.widget.Toast;
 import com.application.jojobudiman.konigeldandroid.R;
 import com.application.jojobudiman.konigeldandroid.starter.SignIn;
 import com.application.jojobudiman.konigeldandroid.starter.WelcomeText;
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +31,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -73,15 +71,18 @@ public class ProductsList extends AppCompatActivity {
     }
 
 
-    private void showResults(ArrayList<Product> pro) {
-
-
+    private void showResults() {
+        /*for (int i = 0; i <= pro.length(); i++) {
+            JSONObject desc = pro.getJSONObject(i);
+            String nama = desc.getString("nama_produk");
+            String hg = desc.getString("harga");
+            listp.add(new Product(nama, hg));
+        }*/
         SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
         String jsonString = sharedPreferences.getString("jsonString", "");
         Toast.makeText(getApplicationContext(), jsonString, Toast.LENGTH_LONG).show();
-
         try {
-            JSONObject jsonObj = new JSONObject(jsonString.toString());
+            JSONObject jsonObj = new JSONObject(jsonString);
             JSONArray pro = jsonObj.getJSONArray("item");
             for (int i = 0; i < pro.length(); i++) {
                 JSONObject desc = pro.getJSONObject(i);
@@ -201,11 +202,6 @@ public class ProductsList extends AppCompatActivity {
                     int id_p = desc.getInt("id_produk");
                     String harga = desc.getString("harga");
                     //ßToast.makeText(getApplicationContext(), nama,Toast.LENGTH_LONG).show();
-                    String[][] data = new String[][]{
-                            {nama, harga}
-                    };
-                    
-
 
                 }
 
