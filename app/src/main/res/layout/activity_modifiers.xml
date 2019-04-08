@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".modifiers.Modifiers">
+    tools:context=".modifiers.ModifiersList">
 
     <RelativeLayout
         android:id="@+id/topheader"
@@ -46,6 +46,19 @@
 
     </RelativeLayout>
 
+    <SearchView
+        android:id="@+id/searchModifier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:searchIcon="@drawable/search"
+        android:queryHint="Search Product"
+        android:background="@drawable/borderbottomgap"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topheader"
+        >
+    </SearchView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/modifierList"
@@ -55,8 +68,21 @@
         android:dividerHeight="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topheader"
+        app:layout_constraintTop_toBottomOf="@+id/searchModifier"
         tools:listitem="@layout/modifierlist" />
+
+    <TextView
+        android:id="@+id/nomodifierstext"
+        android:fontFamily="@font/dosisthicc"
+        style="@style/NoDataText"
+        tools:text="@string/nomodifiers"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

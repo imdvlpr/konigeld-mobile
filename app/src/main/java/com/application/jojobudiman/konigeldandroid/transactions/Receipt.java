@@ -3,6 +3,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Receipt implements Parcelable {
+    private int id;
     private String total, date, time;
 
     // Getter dan setter dari variable di class
@@ -30,12 +31,23 @@ public class Receipt implements Parcelable {
         this.time = time;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+
     @Override
     public int describeContents() {
         return 0;
     }
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
         dest.writeString(this.total);
         dest.writeString(this.date);
         dest.writeString(this.time);
@@ -45,6 +57,7 @@ public class Receipt implements Parcelable {
     }
 
     private Receipt(Parcel in) {
+        this.id = in.readInt();
         this.total = in.readString();
         this.date = in.readString();
         this.time = in.readString();

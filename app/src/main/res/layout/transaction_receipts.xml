@@ -9,29 +9,6 @@
     android:paddingRight="25dp">
 
     <LinearLayout
-        android:id="@+id/transaction_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="25dp"
-        android:layout_centerHorizontal="true">
-
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/dosisthicc"
-            android:textColor="@color/colorPrimary"
-            android:textSize="12sp"
-            android:textAllCaps="true"
-            android:text="TESTTT"
-            />
-
-    </LinearLayout>
-
-
-    <LinearLayout
         android:id="@+id/transaction_receipt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

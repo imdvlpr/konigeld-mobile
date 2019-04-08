@@ -1,9 +1,12 @@
 package com.application.jojobudiman.konigeldandroid.checkout;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import androidx.fragment.app.Fragment;
 
 import com.application.jojobudiman.konigeldandroid.R;
@@ -20,6 +23,7 @@ public class MainMenu2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.activity_library_menu, container, false);
+
 
         return view;
     }

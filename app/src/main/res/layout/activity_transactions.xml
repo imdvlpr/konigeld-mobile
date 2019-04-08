@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:searchIcon="@drawable/search"
-            android:searchHintIcon="@drawable/search"
+            android:queryHint="Search Transaction"
             android:background="@drawable/borderbottomgap"
             android:backgroundTint="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,6 +68,17 @@
             tools:listitem="@layout/transaction_receipts"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/noreceiptstext"
+            android:fontFamily="@font/dosisthicc"
+            style="@style/NoDataText"
+            tools:text="@string/noreciepts"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
     </RelativeLayout>
 

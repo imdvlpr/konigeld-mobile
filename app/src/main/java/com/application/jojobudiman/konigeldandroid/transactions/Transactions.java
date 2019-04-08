@@ -8,14 +8,21 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -39,7 +46,9 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
     }
 
     private RecyclerView receipts;
+    private ReceiptAdapter adapter;
     private ArrayList<Receipt> list = new ArrayList<>();
+    private ArrayList<Receipt> listFull;
     ImageButton menubtn;
     LinearLayout paygains;
     protected Cursor cursor;
@@ -63,6 +72,9 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
 
 
 
+
+
+
         menubtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +87,35 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
         return view;
         //return inflater.inflate(R.layout.fragment_home, container, false);
     }
+
+    /*@Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.searchlayout, menu);
+        SearchManager transactions = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        if(getActivity() != null) {
+            SearchView transactionsearch = (SearchView) (menu.findItem(R.id.searchReceipt).getActionView());
+            transactionsearch.setImeOptions(EditorInfo.IME_ACTION_DONE);
+            transactionsearch.setSearchableInfo(transactions.getSearchableInfo(getActivity().getComponentName()));
+            transactionsearch.setQueryHint(getResources().getString(R.string.searchtransactions));
+
+            transactionsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    adapter.getFilter().filter(newText);
+                    return false;
+                }
+            });
+
+            }
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }*/
 
     private void showRecyclerList() {
         receipts.setLayoutManager(new LinearLayoutManager(getActivity())); // Vertical LinearLayout is the type of RecyclerView

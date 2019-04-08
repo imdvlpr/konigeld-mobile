@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.application.jojobudiman.konigeldandroid.R;
-import com.application.jojobudiman.konigeldandroid.products.ProductData;
-import com.application.jojobudiman.konigeldandroid.products.ProductListAdapter;
 
 import java.util.ArrayList;
 

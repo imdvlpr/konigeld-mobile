@@ -14,4 +14,14 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="custom">CUSTOM</string>
     <string name="library">LIBRARY</string>
+    <string name="searchtransactions">Search Receipt</string>
+    <string name="searchproduct">Search Product</string>
+    <string name="searchmodifiers">Search Modifiers</string>
+    <string name="searchcategories">Search Categories</string>
+    <string name="searchdiscounts">Search Discounts</string>
+    <string name="noreceipts">No receipts data to display</string>
+    <string name="noproducts">No products data to display</string>
+    <string name="nodiscounts">No discounts data to display</string>
+    <string name="nocategories">No categories data to display</string>
+    <string name="nomodifiers">No modifiers data to display</string>
 </resources>

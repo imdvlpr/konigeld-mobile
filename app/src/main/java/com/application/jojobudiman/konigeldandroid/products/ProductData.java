@@ -20,14 +20,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class ProductData extends Application {
 
-    SharedPreferences sharedPreferences = this.getSharedPreferences("Settings", Context.MODE_PRIVATE);
-    String idout = sharedPreferences.getString("id_outlet", "defaultValue");
-    String url="http://10.0.2.2:8888/semester8/konigeld/assets/mobile/products.php?id_outlet="+idout;
-    //new getMySqlData().execute(url);
-    //Log.v("myApp", url);//Mengeluarkan di logcat
-    //Toast.makeText(getApplicationContext(), url, Toast.LENGTH_LONG).show();
+
+
+/*public class ProductData extends Application {
+
 
     // Data2 yg akan didisplay
     public static String[][] data = new String[][]{
@@ -39,18 +36,18 @@ public class ProductData extends Application {
     };
 
     // Method untuk return arrayList yg isinya data
-    public static ArrayList<Product> getListData(){
+    Zublic static ArrayList<Product> getListData(){
 
         ArrayList<Product> list = new ArrayList<>();
 
-        //SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
-        //String idout = sharedPreferences.getString("id_outlet", "defaultValue");
-        //String url="http://10.0.2.2:8888/semester8/konigeld/assets/mobile/products.php?id_outlet="+idout;
-        //new getMySqlData().execute(url);
-        //Log.v("myApp", url);//Mengeluarkan di logcat
-        //Toast.makeText(getApplicationContext(), url, Toast.LENGTH_LONG).show();
+        SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        String idout = sharedPreferences.getString("id_outlet", "defaultValue");
+        String url="http://10.0.2.2:8888/semester8/konigeld/assets/mobile/products.php?id_outlet="+idout;
+        new getMySqlData().execute(url);
+        Log.v("myApp", url);//Mengeluarkan di logcat
+        Toast.makeText(getApplicationContext(), url, Toast.LENGTH_LONG).show();*/
         // For loop untuk melihat pecahan dr String Array
-        for (String[] aData : data) {
+        /*for (String[] aData : data) {
             Product product = new Product();
             // Set pecahan dr String Array ke variable di Receipt
             product.setName(aData[0]);
@@ -61,6 +58,7 @@ public class ProductData extends Application {
         }
         return list;
     }
+
 
     public class getMySqlData extends AsyncTask<String, String, String> {
 
@@ -86,65 +84,7 @@ public class ProductData extends Application {
 
             }
             return null;
-        }
+        }*/
 
 
-        protected void onProgressUpdate(String... progress) { //Ambil 1 array yang dilakukan
 
-            try {
-                //String[] idp = new String[100];
-                JSONObject json= new JSONObject(progress[0]);
-                //JSONArray descWeather = json.getJSONArray("user"); //Memanggil JSONArray (Dari array object) dari data
-
-                JSONArray pro = json.getJSONArray("item");
-
-                for(int i = 0; i < pro.length(); i++) {
-                    JSONObject desc = pro.getJSONObject(i);
-                    String nama = desc.getString("nama_produk");
-                    Toast.makeText(getApplicationContext(), nama,Toast.LENGTH_LONG).show();
-
-                }
-
-                SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-
-
-                //editor.apply();
-
-
-            } catch (Exception ex) {
-                //Toast.makeText(getApplicationContext(),"Fail load API data",Toast.LENGTH_LONG).show();
-            }
-
-
-        }
-
-        protected void onPostExecute(String  result2){
-
-
-        }
-
-
-    }
-
-
-    public static String ConvertInputToStringNoChange(InputStream inputStream) { //Menghilangkan string BufferReader
-
-        BufferedReader bureader=new BufferedReader( new InputStreamReader(inputStream));
-        String line ;
-        String linereultcal="";
-
-        try{
-            while((line=bureader.readLine())!=null) {
-                linereultcal+=line;
-
-            }
-            inputStream.close();
-
-
-        }catch (Exception ex){}
-
-        return linereultcal;
-    }
-
-}

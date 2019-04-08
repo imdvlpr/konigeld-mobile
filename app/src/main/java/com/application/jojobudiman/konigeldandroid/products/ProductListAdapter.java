@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,27 +21,27 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     /*private OnItemClicked onClick;*/
     private Context context;
+    ArrayList<Product> products = new ArrayList<Product>();
     private ArrayList<Product> getProductLists() {
         return ProductsList;
     }
-    private OnNoteListener notes;
 
     public void setProductsList(ArrayList<Product> ProductsList) {
         this.ProductsList = ProductsList;
+        this.products = products;
     }
 
     private ArrayList<Product> ProductsList;
 
     public ProductListAdapter(Context context) {
         this.context = context;
-        this.notes = notes;
     }
 
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.productlist, parent, false);
-        return new CategoryViewHolder(itemRow, notes);
+        return new CategoryViewHolder(itemRow);
     }
 
     @Override
@@ -53,31 +54,58 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     @Override
     public int getItemCount() {
-        return getProductLists().size();
+        return products.size();
+
     }
 
-    class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class CategoryViewHolder extends RecyclerView.ViewHolder {
         TextView pName;
         TextView pPrice;
-        OnNoteListener note;
 
-        CategoryViewHolder(View itemView, OnNoteListener note) {
+        CategoryViewHolder(View itemView) {
             super(itemView);
             pName = itemView.findViewById(R.id.producttext);
             pPrice = itemView.findViewById(R.id.productprice);
-            this.note = note;
-            itemView.setOnClickListener(this);
+        }
+
+    }
+
+    /*public Filter getFilter() {
+        return filtering;
+    }
+
+    private Filter filtering = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<Product> flist = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0) {
+                flist.addAll(listFull);
+            }
+
+            else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for(Product product : listFull) {
+                    if(product.getName().toLowerCase().contains(filterPattern)) {
+                        flist.add(product);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = flist;
+            return results;
+
         }
 
         @Override
-        public void onClick(View view) {
-            note.onNoteClick(getAdapterPosition());
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            listFull.clear();
+            listFull.addAll((ArrayList<Product>) results.values);
+            notifyDataSetChanged();
         }
-    }
-
-    public interface OnNoteListener {
-        void onNoteClick(int position);
-    }
+    };*/
 
 
 }
