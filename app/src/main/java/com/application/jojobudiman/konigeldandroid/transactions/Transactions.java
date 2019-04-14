@@ -5,6 +5,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +38,7 @@ import com.application.jojobudiman.konigeldandroid.checkout.CustomMenu;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListener {
     public Transactions() {
@@ -46,9 +48,12 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
     }
 
     private RecyclerView receipts;
-    private ReceiptAdapter adapter;
-    private ArrayList<Receipt> list = new ArrayList<>();
-    private ArrayList<Receipt> listFull;
+    private LinearLayoutManager linearLayoutManager;
+    private DividerItemDecoration dividerItemDecoration;
+    private ReceiptAdapter receiptadapter;
+    private List<Receipt> receiptList;
+    private ReceiptAdapter.OnNoteListener notes;
+    String url;
     ImageButton menubtn;
     LinearLayout paygains;
     protected Cursor cursor;
@@ -63,16 +68,16 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
         Fragment fragment = new Transactions();
         final DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
 
+
         menubtn = (ImageButton) view.findViewById(R.id.menu);
         receipts = (RecyclerView) view.findViewById(R.id.receiptList);
+        receiptList = new ArrayList<>();
+        receiptadapter = new ReceiptAdapter(getContext(), receiptList, notes);
+
         receipts.setHasFixedSize(true);
-        list.addAll(ReceiptData.getListData());
-        showRecyclerList();
-
-
-
-
-
+        receipts.setLayoutManager(linearLayoutManager);
+        receipts.addItemDecoration(dividerItemDecoration);
+        receipts.setAdapter(receiptadapter);
 
 
         menubtn.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +86,6 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
                 drawer.openDrawer(Gravity.LEFT);
             }
         });
-
 
         // Inflate the layout for this fragment
         return view;
@@ -117,27 +121,10 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
         super.onCreateOptionsMenu(menu, inflater);
     }*/
 
-    private void showRecyclerList() {
-        receipts.setLayoutManager(new LinearLayoutManager(getActivity())); // Vertical LinearLayout is the type of RecyclerView
-        ReceiptAdapter receiptadapter = new ReceiptAdapter(getActivity(), this); // Create Adapter object that extends RecyclerViewAdapter
-        receiptadapter.setReceiptList(list); // Call setter method dri ArrayList yg menampung data sbg parameter
-        receipts.setAdapter(receiptadapter); // Set adapter ke RecyclerView
-
-        // Call itemclicksupport class and static method addto,
-        // sehingga attach event click ke item yang ada di RecyclerView
-        /*ItemClickSupport.addTo(receipts).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-            // Apply method from interface
-            @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                // Call method to show toast message
-                showRecyclerList(list.get(position));
-            }
-        });*/
-    }
 
     @Override
     public void onNoteClick(int position) {
-        list.get(position);
+        receiptList.get(position);
         Intent i = new Intent(getActivity(), ReceiptDetails.class);
         startActivity(i);
     }

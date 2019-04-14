@@ -17,47 +17,35 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.CategoryViewHolder> {
+public class ReceiptAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     /*private OnItemClicked onClick;*/
     private Context context;
-    private ArrayList<Receipt> getReceiptList() {
-        return ReceiptList;
-    }
-    private ArrayList<Receipt> listFull;
+    private List<Receipt> receipts;
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
 
     private OnNoteListener notes;
 
 
-    public void setReceiptList(ArrayList<Receipt> ReceiptList) {
-        this.ReceiptList = ReceiptList;
-    }
-
-    private ArrayList<Receipt> ReceiptList;
-
-    public ReceiptAdapter(Context context, OnNoteListener notes) {
+    public ReceiptAdapter(Context context, List<Receipt> receipts, OnNoteListener notes) {
         this.context = context;
+        this.receipts = receipts;
         this.notes = notes;
     }
 
-    /*public interface OnItemClicked {
-        void onItemClick(int position);
-    }*/
-
     @NonNull
     @Override
-    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         if (viewType == TYPE_HEADER) {
-            View itemRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_date, parent, false);
-            return new CategoryViewHolder(itemRow, notes);
+            View v = LayoutInflater.from(context).inflate(R.layout.transaction_date, parent, false);
+            return new ViewHeader(v, notes);
         }
 
         else {
-            View itemRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_receipts, parent, false);
-            return new CategoryViewHolder(itemRow, notes);
+            View v = LayoutInflater.from(context).inflate(R.layout.transaction_receipts, parent, false);
+            return new ViewHolder(v, notes);
         }
 
 
@@ -75,42 +63,32 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.Category
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        /*if (holder instanceof CategoryHeader) {
+        Receipt receipt = receipts.get(position);
+        if(holder instanceof ViewHeader) {
+            ((ViewHeader) holder).rDate.setText(receipt.getDate());
+        } else if(holder instanceof ViewHolder) {
+            ((ViewHolder) holder).rTime.setText(receipt.getTime());
+            ((ViewHolder) holder).rTotal.setText(receipt.getTotal());
 
-        }*/
+        }
 
-        holder.rTime.setText(getReceiptList().get(position-1).getTime());
-        holder.rTotal.setText(getReceiptList().get(position-1).getTotal());
-
-        /*holder.rDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClick.onItemClick(position);
-            }
-        });*/
 
     }
-
-
-
-        /*holder.rDate.setText(getReceiptList().get(position).getDate());*/
-
-
 
 
     @Override
     public int getItemCount() {
-        return getReceiptList().size() + 1;
+        return receipts.size();
     }
 
-    class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView rTime;
         TextView rTotal;
         OnNoteListener note;
 
-        CategoryViewHolder(View itemView, OnNoteListener note) {
+        ViewHolder(View itemView, OnNoteListener note) {
             super(itemView);
             rTime = itemView.findViewById(R.id.time);
             rTotal = itemView.findViewById(R.id.amount);
@@ -127,15 +105,14 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.Category
 
     }
 
-    class CategoryHeader extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHeader extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView rDate;
         OnNoteListener note;
 
-        CategoryHeader(View itemView, OnNoteListener note) {
+        public ViewHeader(View itemView, OnNoteListener note) {
             super(itemView);
             rDate = itemView.findViewById(R.id.date);
             this.note = note;
-
             itemView.setOnClickListener(this);
 
         }

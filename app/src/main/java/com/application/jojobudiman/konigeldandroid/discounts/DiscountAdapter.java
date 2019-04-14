@@ -16,83 +16,49 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class DiscountAdapter extends RecyclerView.Adapter<DiscountAdapter.CategoryViewHolder> {
+public class DiscountAdapter extends RecyclerView.Adapter<DiscountAdapter.ViewHolder> {
 
     /*private OnItemClicked onClick;*/
     private Context context;
-    private ArrayList<Discount> getDiscountList() {
-        return DiscountList;
-    }
+    private List<Discount> discounts;
 
-    private OnNoteListener notes;
-
-
-    public void setDiscountList(ArrayList<Discount> DiscountList) {
-        this.DiscountList = DiscountList;
-    }
-
-    private ArrayList<Discount> DiscountList;
-
-    public DiscountAdapter(Context context) {
+    public DiscountAdapter(Context context, List<Discount> discounts) {
         this.context = context;
-        this.notes = notes;
+        this.discounts = discounts;
     }
-
-    /*public interface OnItemClicked {
-        void onItemClick(int position);
-    }*/
 
     @NonNull
     @Override
-    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.discountlist, parent, false);
-        return new CategoryViewHolder(itemRow, notes);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.discountlist, parent, false);
+        return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, final int position) {
-        holder.dName.setText(getDiscountList().get(position).getName());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Discount discount = discounts.get(position);
 
-        /*holder.rDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClick.onItemClick(position);
-            }
-        });*/
-
+        holder.dName.setText(discount.getName());
+        holder.dPrice.setText(discount.getDisc());
     }
 
 
 
     @Override
     public int getItemCount() {
-        return getDiscountList().size();
+        return discounts.size();
     }
 
-    class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView dName;
-        OnNoteListener note;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        TextView dName, dPrice;
 
-        CategoryViewHolder(View itemView, OnNoteListener note) {
+        ViewHolder(View itemView) {
             super(itemView);
             dName = itemView.findViewById(R.id.discountname);
-            this.note = note;
-
-            itemView.setOnClickListener(this);
+            dPrice = itemView.findViewById(R.id.discountprice);
 
         }
 
-        @Override
-        public void onClick(View view) {
-            note.onNoteClick(getAdapterPosition());
-        }
-
     }
-
-    public interface OnNoteListener {
-        void onNoteClick(int position);
-    }
-
-
 
 }

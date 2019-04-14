@@ -104,7 +104,6 @@ public class MainMenu extends Fragment {
                 }
 
 
-
                 else {
                     int length = calcoutput.getText().length();
                     if(length == 9) {

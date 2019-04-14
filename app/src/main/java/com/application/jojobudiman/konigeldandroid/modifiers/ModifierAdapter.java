@@ -9,69 +9,49 @@ import android.widget.TextView;
 import com.application.jojobudiman.konigeldandroid.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ModifierAdapter extends RecyclerView.Adapter<ModifierAdapter.CategoryViewHolder> {
+public class ModifierAdapter extends RecyclerView.Adapter<ModifierAdapter.ViewHolder> {
 
     /*private OnItemClicked onClick;*/
     private Context context;
-    private ArrayList<Modifier> getModifiers() {
-        return ModifiersList;
-    }
-    private OnNoteListener notes;
+    private List<Modifier> modifiers;
 
-    public void setModifiersList(ArrayList<Modifier> ModifiersList) {
-        this.ModifiersList = ModifiersList;
-    }
-
-    private ArrayList<Modifier> ModifiersList;
-
-    public ModifierAdapter(Context context) {
+    public ModifierAdapter(Context context, List<Modifier> modifiers) {
         this.context = context;
-        this.notes = notes;
+        this.modifiers = modifiers;
     }
 
     @NonNull
     @Override
-    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.modifierlist, parent, false);
-        return new CategoryViewHolder(itemRow, notes);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.modifierlist, parent, false);
+        return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, final int position) {
-        holder.mName.setText(getModifiers().get(position).getName());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Modifier modifier = modifiers.get(position);
+
+        holder.mName.setText(modifier.getName());
     }
 
 
 
     @Override
     public int getItemCount() {
-        return getModifiers().size();
+        return modifiers.size();
     }
 
-    class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView mName;
-        OnNoteListener note;
 
-        CategoryViewHolder(View itemView, OnNoteListener note) {
+        public ViewHolder(View itemView) {
             super(itemView);
             mName = itemView.findViewById(R.id.modifiername);
-            this.note = note;
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            note.onNoteClick(getAdapterPosition());
         }
     }
-
-    public interface OnNoteListener {
-        void onNoteClick(int position);
-    }
-
-
 }

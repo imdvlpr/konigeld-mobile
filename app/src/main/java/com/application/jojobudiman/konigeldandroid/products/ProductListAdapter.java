@@ -2,6 +2,7 @@ package com.application.jojobudiman.konigeldandroid.products;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,45 +13,36 @@ import android.widget.TextView;
 import com.application.jojobudiman.konigeldandroid.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.CategoryViewHolder> {
+public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ViewHolder> {
 
-    /*private OnItemClicked onClick;*/
     private Context context;
-    ArrayList<Product> products = new ArrayList<Product>();
-    private ArrayList<Product> getProductLists() {
-        return ProductsList;
-    }
+    private List<Product> products;
 
-    public void setProductsList(ArrayList<Product> ProductsList) {
-        this.ProductsList = ProductsList;
-        this.products = products;
-    }
-
-    private ArrayList<Product> ProductsList;
-
-    public ProductListAdapter(Context context) {
+    public ProductListAdapter(Context context, List<Product> products) {
         this.context = context;
+        this.products = products;
     }
 
     @NonNull
     @Override
-    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.productlist, parent, false);
-        return new CategoryViewHolder(itemRow);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.productlist, parent, false);
+        return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, final int position) {
-        holder.pName.setText(getProductLists().get(position).getName());
-        holder.pPrice.setText(getProductLists().get(position).getPrice());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Product product = products.get(position);
+
+        holder.pName.setText(product.getName());
+        holder.pPrice.setText(product.getPrice());
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -58,11 +50,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     }
 
-    class CategoryViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView pName;
         TextView pPrice;
 
-        CategoryViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             pName = itemView.findViewById(R.id.producttext);
             pPrice = itemView.findViewById(R.id.productprice);
