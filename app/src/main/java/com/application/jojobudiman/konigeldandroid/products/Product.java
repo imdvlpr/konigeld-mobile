@@ -6,14 +6,15 @@ import org.json.JSONArray;
 
 public class Product {
 
-    public String name, price;
+    public static String name;
+    public String price;
 
     public Product(String name, String price) {
         this.name = name;
         this.price = price;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 

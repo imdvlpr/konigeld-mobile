@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -37,7 +38,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainMenu2 extends Fragment implements FilterProductAdapter.OnNoteListener {
+public class MainMenu2 extends Fragment {
 
 
     public MainMenu2() {
@@ -58,6 +59,7 @@ public class MainMenu2 extends Fragment implements FilterProductAdapter.OnNoteLi
     private FilterProductAdapter.OnNoteListener notes;
     ImageButton menu;
     Button charge;
+    TextView konicontainer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,6 +73,7 @@ public class MainMenu2 extends Fragment implements FilterProductAdapter.OnNoteLi
         viewDemo = (Spinner) view.findViewById(R.id.viewElements);
         dashboard = new ArrayList<>();
         fillist = new ArrayList<>();
+        konicontainer = (TextView) view.findViewById(R.id.konicont);
 
         getData();
 
@@ -341,6 +344,7 @@ public class MainMenu2 extends Fragment implements FilterProductAdapter.OnNoteLi
                         String hg = jsonObject.getString("harga");
                         int id = jsonObject.getInt("id_produk");
                         int harga = Integer.parseInt(hg);
+
                         FilterSelect filterSelect = new FilterSelect(nama, harga, id);
                         filterSelect.setFiltername(nama);
                         filterSelect.setFilterprice(harga);
@@ -415,12 +419,6 @@ public class MainMenu2 extends Fragment implements FilterProductAdapter.OnNoteLi
         }
 
     }*/
-
-    @Override
-    public void onNoteClick(int position) {
-        fillist.get(position);
-        //Insert code xdxd
-    }
 
 }
 

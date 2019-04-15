@@ -38,7 +38,7 @@ public class CustomMenu extends Fragment {
     Button charge;
     DrawerLayout drawer;
     Dialog popup;
-    TextView logoutbtn;
+    TextView logoutbtn, konicontainer;
 
 
     @Override
@@ -49,6 +49,7 @@ public class CustomMenu extends Fragment {
         View iview = inflater.inflate(R.layout.activity_sidebar_menu, container, false);
         final DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
 
+        konicontainer = (TextView) view.findViewById(R.id.konicont);
         charge = (Button) view.findViewById(R.id.chargebtn);
         menu = (ImageButton) view.findViewById(R.id.hamburger);
         selectButton = (TabLayout) view.findViewById(R.id.checkoutTabs);

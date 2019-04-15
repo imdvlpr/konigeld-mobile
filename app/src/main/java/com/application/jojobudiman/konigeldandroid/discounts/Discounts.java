@@ -66,7 +66,6 @@ public class Discounts extends AppCompatActivity {
 
         getData();
 
-
         menubtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

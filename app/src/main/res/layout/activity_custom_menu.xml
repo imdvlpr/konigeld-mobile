@@ -41,13 +41,15 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/konicont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:layout_toRightOf="@+id/textView2"
             android:fontFamily="@font/dosisthicc"
-            android:text="[]"
+            android:text="[10]"
             android:textColor="@color/colorSecondaryText"
             android:textSize="18sp"
              />

@@ -22,6 +22,7 @@ public class EnterCash extends AppCompatActivity {
     private ImageView close;
     private EditText price;
     TextView total;
+    String url;
 
 
     @Override
@@ -40,7 +41,7 @@ public class EnterCash extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        String tota = sharedPreferences.getString("total", "defaultValue");
+        String tota = sharedPreferences.getString("finn", "defaultValue");
 
         total.setText(tota + " Cash");
 
@@ -120,6 +121,7 @@ public class EnterCash extends AppCompatActivity {
         finalcharge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                url = "http://10.0.2.2/semester8/konigeld/assets/mobile/insert.php?";
                 Intent i = new Intent(getApplicationContext(), PaymentSuccess.class);
                 startActivity(i);
             }
