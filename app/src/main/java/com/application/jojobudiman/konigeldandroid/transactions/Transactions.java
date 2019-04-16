@@ -5,17 +5,25 @@ import androidx.appcompat.widget.SearchView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -30,6 +38,7 @@ import com.application.jojobudiman.konigeldandroid.checkout.CustomMenu;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListener {
     public Transactions() {
@@ -39,7 +48,12 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
     }
 
     private RecyclerView receipts;
-    private ArrayList<Receipt> list = new ArrayList<>();
+    private LinearLayoutManager linearLayoutManager;
+    private DividerItemDecoration dividerItemDecoration;
+    private ReceiptAdapter receiptadapter;
+    private List<Receipt> receiptList;
+    private ReceiptAdapter.OnNoteListener notes;
+    String url;
     ImageButton menubtn;
     LinearLayout paygains;
     protected Cursor cursor;
@@ -54,13 +68,16 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
         Fragment fragment = new Transactions();
         final DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
 
+
         menubtn = (ImageButton) view.findViewById(R.id.menu);
         receipts = (RecyclerView) view.findViewById(R.id.receiptList);
+        receiptList = new ArrayList<>();
+        receiptadapter = new ReceiptAdapter(getContext(), receiptList, notes);
+
         receipts.setHasFixedSize(true);
-        list.addAll(ReceiptData.getListData());
-        showRecyclerList();
-
-
+        receipts.setLayoutManager(linearLayoutManager);
+        receipts.addItemDecoration(dividerItemDecoration);
+        receipts.setAdapter(receiptadapter);
 
 
         menubtn.setOnClickListener(new View.OnClickListener() {
@@ -70,33 +87,44 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
             }
         });
 
-
         // Inflate the layout for this fragment
         return view;
         //return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
-    private void showRecyclerList() {
-        receipts.setLayoutManager(new LinearLayoutManager(getActivity())); // Vertical LinearLayout is the type of RecyclerView
-        ReceiptAdapter receiptadapter = new ReceiptAdapter(getActivity(), this); // Create Adapter object that extends RecyclerViewAdapter
-        receiptadapter.setReceiptList(list); // Call setter method dri ArrayList yg menampung data sbg parameter
-        receipts.setAdapter(receiptadapter); // Set adapter ke RecyclerView
+    /*@Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.searchlayout, menu);
+        SearchManager transactions = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 
-        // Call itemclicksupport class and static method addto,
-        // sehingga attach event click ke item yang ada di RecyclerView
-        /*ItemClickSupport.addTo(receipts).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-            // Apply method from interface
-            @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                // Call method to show toast message
-                showRecyclerList(list.get(position));
+        if(getActivity() != null) {
+            SearchView transactionsearch = (SearchView) (menu.findItem(R.id.searchReceipt).getActionView());
+            transactionsearch.setImeOptions(EditorInfo.IME_ACTION_DONE);
+            transactionsearch.setSearchableInfo(transactions.getSearchableInfo(getActivity().getComponentName()));
+            transactionsearch.setQueryHint(getResources().getString(R.string.searchtransactions));
+
+            transactionsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    adapter.getFilter().filter(newText);
+                    return false;
+                }
+            });
+
             }
-        });*/
-    }
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }*/
+
 
     @Override
     public void onNoteClick(int position) {
-        list.get(position);
+        receiptList.get(position);
         Intent i = new Intent(getActivity(), ReceiptDetails.class);
         startActivity(i);
     }

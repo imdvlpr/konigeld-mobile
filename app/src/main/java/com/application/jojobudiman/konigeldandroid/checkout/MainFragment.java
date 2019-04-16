@@ -26,6 +26,8 @@ import com.application.jojobudiman.konigeldandroid.transactions.Transactions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import org.w3c.dom.Text;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,7 +44,7 @@ public class MainFragment extends AppCompatActivity implements NavigationView.On
     RelativeLayout topHeader;
     TabLayout selectButton;
     Toolbar toolbar;
-    TextView logoutbtn;
+    TextView logoutbtn, container;
     DrawerLayout drawer;
 
     NavigationView navigationView;

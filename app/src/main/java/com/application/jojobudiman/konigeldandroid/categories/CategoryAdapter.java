@@ -9,53 +9,36 @@ import android.widget.TextView;
 import com.application.jojobudiman.konigeldandroid.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
     /*private OnItemClicked onClick;*/
     private Context context;
-    private ArrayList<Category> getCategoryList() {
-        return CategoryList;
-    }
-
-    private OnNoteListener notes;
+    private List<Category> categories;
 
 
-    public void setCategoryList(ArrayList<Category> CategoryList) {
-        this.CategoryList = CategoryList;
-    }
 
-    private ArrayList<Category> CategoryList;
-
-    public CategoryAdapter(Context context) {
+    public CategoryAdapter(Context context, List<Category> categories) {
         this.context = context;
-        this.notes = notes;
+        this.categories = categories;
     }
-
-    /*public interface OnItemClicked {
-        void onItemClick(int position);
-    }*/
 
     @NonNull
     @Override
-    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.categorylist, parent, false);
-        return new CategoryViewHolder(itemRow, notes);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.categorylist, parent, false);
+        return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, final int position) {
-        holder.cName.setText(getCategoryList().get(position).getName());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Category category = categories.get(position);
 
-        /*holder.rDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClick.onItemClick(position);
-            }
-        });*/
+        holder.cName.setText(category.getName());
 
     }
 
@@ -63,33 +46,20 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     @Override
     public int getItemCount() {
-        return getCategoryList().size();
+        return categories.size();
     }
 
-    class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView cName;
-        OnNoteListener note;
 
-        CategoryViewHolder(View itemView, OnNoteListener note) {
+       public ViewHolder(View itemView) {
             super(itemView);
             cName = itemView.findViewById(R.id.categoryname);
-            this.note = note;
 
-            itemView.setOnClickListener(this);
 
         }
 
-        @Override
-        public void onClick(View view) {
-            note.onNoteClick(getAdapterPosition());
-        }
-
     }
-
-    public interface OnNoteListener {
-        void onNoteClick(int position);
-    }
-
 
 
 }

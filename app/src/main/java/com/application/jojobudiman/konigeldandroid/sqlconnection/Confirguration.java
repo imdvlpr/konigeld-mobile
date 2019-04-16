@@ -19,7 +19,7 @@ public class Confirguration {
     public static final String KEY_OUTLET_ID = "id_outlet";
     public static final String KEY_MERCHANT_ID = "id_merchant";
     public static final String KEY_USER_STATUS = "status_user";
-    
+
 
     //JSON Tags
     public static final String TAG_JSON_ARRAY = "result";
