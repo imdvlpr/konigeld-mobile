@@ -1,12 +1,17 @@
 package com.application.jojobudiman.konigeldandroid.transactions;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.application.jojobudiman.konigeldandroid.R;
 
@@ -19,19 +24,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ReceiptAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    /*private OnItemClicked onClick;*/
     private Context context;
     private List<Receipt> receipts;
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
 
-    private OnNoteListener notes;
 
 
-    public ReceiptAdapter(Context context, List<Receipt> receipts, OnNoteListener notes) {
+    public ReceiptAdapter(Context context, List<Receipt> receipts) {
         this.context = context;
         this.receipts = receipts;
-        this.notes = notes;
     }
 
     @NonNull
@@ -40,12 +42,12 @@ public class ReceiptAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         if (viewType == TYPE_HEADER) {
             View v = LayoutInflater.from(context).inflate(R.layout.transaction_date, parent, false);
-            return new ViewHeader(v, notes);
+            return new ViewHeader(v);
         }
 
         else {
             View v = LayoutInflater.from(context).inflate(R.layout.transaction_receipts, parent, false);
-            return new ViewHolder(v, notes);
+            return new ViewHolder(v);
         }
 
 
@@ -58,7 +60,19 @@ public class ReceiptAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         else {
-            return TYPE_ITEM;
+            Receipt receipt = receipts.get(position);
+            String tgl = receipt.getDate();
+
+            Receipt receipt2 = receipts.get(position-1);
+            String tgl2 = receipt2.getDate();
+
+            if(tgl2.equals(tgl)) {
+                return TYPE_ITEM;
+            }
+            else {
+                return TYPE_HEADER;
+            }
+
         }
     }
 
@@ -68,10 +82,13 @@ public class ReceiptAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         Receipt receipt = receipts.get(position);
         if(holder instanceof ViewHeader) {
             ((ViewHeader) holder).rDate.setText(receipt.getDate());
+            ((ViewHeader) holder).rTime.setText(receipt.getTime());
+            ((ViewHeader) holder).rAmount.setText(receipt.getTotal());
+
+
         } else if(holder instanceof ViewHolder) {
             ((ViewHolder) holder).rTime.setText(receipt.getTime());
             ((ViewHolder) holder).rTotal.setText(receipt.getTotal());
-
         }
 
 
@@ -83,49 +100,79 @@ public class ReceiptAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return receipts.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
         TextView rTime;
         TextView rTotal;
-        OnNoteListener note;
 
-        ViewHolder(View itemView, OnNoteListener note) {
+        ViewHolder(View itemView) {
             super(itemView);
             rTime = itemView.findViewById(R.id.time);
             rTotal = itemView.findViewById(R.id.amount);
-            this.note = note;
-
             itemView.setOnClickListener(this);
 
         }
 
+
         @Override
         public void onClick(View view) {
-            note.onNoteClick(getAdapterPosition());
+            Log.v("XXXXXXXXXXXXXXXXXXXXXXXXXXX", ""+getAdapterPosition());
+            Receipt receipt = receipts.get(getAdapterPosition());
+            SharedPreferences sharedPreferences = context.getSharedPreferences("Settings", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            int id = receipt.getId();
+            editor.remove("ID_Hist");
+            editor.apply();
+            Log.v("XXXXXXXXXXXXXXXXXXXXXXXXXXX IDNYA", ""+id);
+            editor.putInt("ID_Hist", id);
+            String ttl = receipt.getTotal();
+            editor.putString("totalnya", ttl);
+            editor.apply();
+            Context context = view.getContext();
+            Intent i = new Intent(context, ReceiptDetails.class);
+            context.startActivity(i);
         }
-
     }
 
     class ViewHeader extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         TextView rDate;
-        OnNoteListener note;
+        TextView rTime;
+        TextView rAmount;
+        LinearLayout header, dates;
 
-        public ViewHeader(View itemView, OnNoteListener note) {
+
+        public ViewHeader(View itemView) {
             super(itemView);
+            header = itemView.findViewById(R.id.transaction_header_date);
+            dates = itemView.findViewById(R.id.transaction_date);
             rDate = itemView.findViewById(R.id.date);
-            this.note = note;
-            itemView.setOnClickListener(this);
+            rTime = itemView.findViewById(R.id.time);
+            rAmount = itemView.findViewById(R.id.amount);
 
+            header.setClickable(false);
+            header.setFocusable(false);
+            dates.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            note.onNoteClick(getAdapterPosition());
+            Log.v("XXXXXXXXXXXXXXXXXXXXXXXXXXX", ""+getAdapterPosition());
+            Receipt receipt = receipts.get(getAdapterPosition());
+            SharedPreferences sharedPreferences = context.getSharedPreferences("Settings", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.remove("ID_Hist");
+            editor.apply();
+            int id = receipt.getId();
+            String ttl = receipt.getTotal();
+            //Log.v("XXXXXXXXXXXXXXXXXXXXXXXXXXX IDNYA", ""+id);
+            editor.putInt("ID_Hist", id);
+            editor.putString("totalnya", ttl);
+            editor.apply();
+            Context context = view.getContext();
+            Intent i = new Intent(context, ReceiptDetails.class);
+            context.startActivity(i);
         }
 
-    }
-
-    public interface OnNoteListener {
-        void onNoteClick(int position);
     }
 
     /*public Filter getFilter() {

@@ -16,25 +16,17 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.CategoryViewHolder> {
+public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     /*private OnItemClicked onClick;*/
     private Context context;
-    private ArrayList<Item> getItemList() {
-        return ItemList;
-    }
-
+    private List<Item> items;
     private OnNoteListener notes;
 
 
-    public void setItemList(ArrayList<Item> ItemList) {
-        this.ItemList = ItemList;
-    }
-
-    private ArrayList<Item> ItemList;
-
-    public ItemAdapter(Context context) {
+    public ItemAdapter(Context context, List<Item> items) {
         this.context = context;
+        this.items = items;
     }
 
     /*public interface OnItemClicked {
@@ -43,33 +35,32 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.CategoryViewHo
 
     @NonNull
     @Override
-    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_container, parent, false);
-        return new CategoryViewHolder(itemRow, notes);
+        return new ViewHolder(itemRow, notes);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, final int position) {
-        holder.iName.setText(getItemList().get(position).getName());
-        holder.iQuantity.setText(getItemList().get(position).getQuantity());
-        holder.iPrice.setText(getItemList().get(position).getPrice());
-
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        Item item = items.get(position);
+        ((ViewHolder) holder).iName.setText(item.getName());
+        ((ViewHolder) holder).iQuantity.setText(item.getQuantity());
+        ((ViewHolder) holder).iPrice.setText(item.getPrice());
     }
-
 
 
     @Override
     public int getItemCount() {
-        return getItemList().size();
+        return items.size();
     }
 
-    class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView iName;
         TextView iQuantity;
         TextView iPrice;
         OnNoteListener note;
 
-        CategoryViewHolder(View itemView, OnNoteListener note) {
+        ViewHolder(View itemView, OnNoteListener note) {
             super(itemView);
             iName = itemView.findViewById(R.id.itemname);
             iQuantity = itemView.findViewById(R.id.quantity);

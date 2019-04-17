@@ -9,13 +9,16 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -32,15 +35,25 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.application.jojobudiman.konigeldandroid.R;
 import com.application.jojobudiman.konigeldandroid.checkout.CustomMenu;
+import com.application.jojobudiman.konigeldandroid.products.Product;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListener {
+public class Transactions extends Fragment {
     public Transactions() {
 
 
@@ -52,7 +65,6 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
     private DividerItemDecoration dividerItemDecoration;
     private ReceiptAdapter receiptadapter;
     private List<Receipt> receiptList;
-    private ReceiptAdapter.OnNoteListener notes;
     String url;
     ImageButton menubtn;
     LinearLayout paygains;
@@ -64,6 +76,11 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        String idout = sharedPreferences.getString("id_outlet", "defaultValue");
+        url = "http://10.0.2.2:8888/semester8/konigeld/assets/mobile/select_hist.php?id_outlet="+idout;
+        Log.v("myApp", url);//Mengeluarkan di logcat
+
         View view = inflater.inflate(R.layout.activity_transactions, container, false);
         Fragment fragment = new Transactions();
         final DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
@@ -72,12 +89,16 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
         menubtn = (ImageButton) view.findViewById(R.id.menu);
         receipts = (RecyclerView) view.findViewById(R.id.receiptList);
         receiptList = new ArrayList<>();
-        receiptadapter = new ReceiptAdapter(getContext(), receiptList, notes);
+        receiptadapter = new ReceiptAdapter(getContext(), receiptList);
+
+        linearLayoutManager = new LinearLayoutManager(this.getContext());
+        dividerItemDecoration = new DividerItemDecoration(receipts.getContext(), linearLayoutManager.getOrientation());
 
         receipts.setHasFixedSize(true);
         receipts.setLayoutManager(linearLayoutManager);
-        receipts.addItemDecoration(dividerItemDecoration);
         receipts.setAdapter(receiptadapter);
+
+        getData();
 
 
         menubtn.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +111,50 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
         // Inflate the layout for this fragment
         return view;
         //return inflater.inflate(R.layout.fragment_home, container, false);
+    }
+
+    private void getData() {
+        final ProgressDialog progressDialog = new ProgressDialog(this.getContext());
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        //JSONArray nama = jsonObject.getJSONArray("nama_produk");
+                        //JSONArray harga = jsonObject.getJSONArray("harga");
+                        int id = jsonObject.getInt("id_order");
+                        String tgl = jsonObject.getString("date");
+                        String wkt = jsonObject.getString("waktu");
+                        String ttl = jsonObject.getString("total_order");
+                        //Log.v("TESTTTT", nama);
+                        //Toast.makeText(getApplicationContext(), nama, Toast.LENGTH_LONG).show();
+                        Receipt receipt = new Receipt(tgl, wkt, ttl);
+                        receipt.setId(id);
+                        receipt.setDate(tgl);
+                        receipt.setTime(wkt);
+                        receipt.setTotal("Rp " + ttl);
+                        receiptList.add(receipt);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+                    }
+                }
+                receiptadapter.notifyDataSetChanged();
+                progressDialog.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Volley", error.toString());
+                progressDialog.dismiss();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this.getContext());
+        requestQueue.add(jsonArrayRequest);
     }
 
     /*@Override
@@ -122,12 +187,12 @@ public class Transactions extends Fragment implements ReceiptAdapter.OnNoteListe
     }*/
 
 
-    @Override
+    /*@Override
     public void onNoteClick(int position) {
         receiptList.get(position);
         Intent i = new Intent(getActivity(), ReceiptDetails.class);
         startActivity(i);
-    }
+    }*/
 
 
     /*public void onItemClick(int position) {

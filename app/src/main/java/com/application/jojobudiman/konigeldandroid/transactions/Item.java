@@ -2,10 +2,16 @@ package com.application.jojobudiman.konigeldandroid.transactions;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Item implements Parcelable {
+public class Item {
     private String name, quantity, price;
 
     // Getter dan setter dari variable di class
+
+    public Item(String name, String quantity, String price) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
     public String getName() {
         return name;
     }
@@ -30,33 +36,4 @@ public class Item implements Parcelable {
         this.price = price;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.name);
-        dest.writeString(this.quantity);
-        dest.writeString(this.price);
-    }
-
-    Item() {
-    }
-
-    private Item(Parcel in) {
-        this.name = in.readString();
-        this.quantity = in.readString();
-        this.price = in.readString();
-    }
-    public static final Parcelable.Creator<Item> CREATOR = new Parcelable.Creator<Item>() {
-        @Override
-        public Item createFromParcel(Parcel source) {
-            return new Item(source);
-        }
-        @Override
-        public Item[] newArray(int size) {
-            return new Item[size];
-        }
-    };
 }

@@ -129,10 +129,12 @@
             android:fontFamily="@font/dosisregular"
             android:text="Returned Goods"
             android:textColor="@color/colorPrimary"
+            android:buttonTint="@color/colorPrimary"
             android:textSize="14sp"
             android:textAlignment="textStart"
             android:layout_gravity="start"
-            android:button="@drawable/radiobutton" />
+
+             />
 
         <RadioButton
             android:id="@+id/value2"
@@ -145,9 +147,10 @@
             android:text="Cancelled Order"
             android:textColor="@color/colorPrimary"
             android:textSize="14sp"
+            android:buttonTint="@color/colorPrimary"
             android:textAlignment="textStart"
             android:layout_gravity="start"
-            android:button="@drawable/radiobutton" />
+             />
 
         <RadioButton
             android:id="@+id/value3"
@@ -160,9 +163,10 @@
             android:text="Accidental Charge"
             android:textColor="@color/colorPrimary"
             android:textSize="14sp"
+            android:buttonTint="@color/colorPrimary"
             android:textAlignment="textStart"
             android:layout_gravity="start"
-            android:button="@drawable/radiobutton" />
+             />
 
     </RadioGroup>
 

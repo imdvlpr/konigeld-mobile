@@ -209,6 +209,16 @@ public class FilterProductAdapter extends RecyclerView.Adapter<RecyclerView.View
                         String nama = jsonObject.getString("nama_dis");
                         String harga = jsonObject.getString("dis");
                         Discount discount = new Discount(nama, "0");
+                        Double hg1 = Double.parseDouble(harga);
+                        int hg = 0;
+                        if(hg1 < 1) {
+                            hg = (int) (hg1 * 100);
+                            discount.setDisc(); //set disni
+                        }
+                        else {
+                            hg = (int) (hg1 * 1);
+                            discount.setDisc(); //set disini
+                         }
                         discount.setName(nama);
                         discount.setDisc("0");
                         Log.v("XXXXXXXXXXXXXXXXXXXXXXXXXX   ", "MASUKIN "+nama);

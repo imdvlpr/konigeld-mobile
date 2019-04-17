@@ -90,6 +90,11 @@ public class PaymentSuccess extends AppCompatActivity {
         norec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("bayar");
+                editor.remove("total");
+                editor.remove("finn");
+                editor.commit();
                 SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
                 String idout = sharedPreferences.getString("id_outlet", "default");
                 String id_user = sharedPreferences.getString("id", "default");
