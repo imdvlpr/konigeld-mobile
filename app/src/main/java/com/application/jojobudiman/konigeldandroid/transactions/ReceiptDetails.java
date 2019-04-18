@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +32,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReceiptDetails extends AppCompatActivity {
+public class ReceiptDetails extends Activity {
 
     ImageButton bacc;
     Button newrec, refund;
@@ -42,7 +43,7 @@ public class ReceiptDetails extends AppCompatActivity {
     private List<Item> list;
     private ItemAdapter itemadapter;
     String url, ttt;
-    TextView idnya, stotal, total;
+    TextView idnya, stotal, total, atas;
 
 
 
@@ -62,9 +63,10 @@ public class ReceiptDetails extends AppCompatActivity {
         newrec = (Button) findViewById(R.id.newreceipt);
         refund = (Button) findViewById(R.id.issuerefund);
         bacc = (ImageButton) findViewById(R.id.menu);
-        idnya = (TextView) findViewById(R.id.paymenttext);
+        idnya = (TextView) findViewById(R.id.receiptnum);
         stotal = (TextView) findViewById(R.id.stotaltext);
         total = (TextView) findViewById(R.id.total);
+        atas = (TextView) findViewById(R.id.textView2);
         items = (RecyclerView) findViewById(R.id.itemsList);
 
         list = new ArrayList<>();
@@ -80,7 +82,9 @@ public class ReceiptDetails extends AppCompatActivity {
 
         getData();
 
-        total.setText("Rp "+ sharedPreferences.getString("totalnya", "0"));
+        total.setText(sharedPreferences.getString("totalnya", "0"));
+        atas.setText(sharedPreferences.getString("totalnya", "0"));
+        idnya.setText("#"+sharedPreferences.getInt("ID_Hist", 0));
 
         bacc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +102,7 @@ public class ReceiptDetails extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), NewReceipt.class);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -106,6 +111,7 @@ public class ReceiptDetails extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), IssueRefund.class);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -138,14 +144,13 @@ public class ReceiptDetails extends AppCompatActivity {
                         Log.v("XXXXXXXXXXXXXXX PRODUK", nama_mod);
                         if(! nama.equals("null")) {
                             Log.v("XXXXXXXXXXXXXXX PRODUK", "SINI");
-                            nm[i] = nama;
-                            if(i == 0) {
-                                nm[i] = nama;
-                                quan[i] = 1;
+                            if(count == 0) {
+                                nm[count] = nama;
+                                quan[count] = 1;
                             }
 
-                            for(int k = 0; k < i; k++) {
-                                if(nm[k].equals(nm[i])) {
+                            for(int k = 0; k < count; k++) {
+                                if(nm[k].equals(nama)) {
                                     quan[k]++;
                                     int hgg = Integer.parseInt(harga)*quan[k];
                                     hg[k] = String.valueOf(hgg);
@@ -154,23 +159,22 @@ public class ReceiptDetails extends AppCompatActivity {
                                 }
                             }
                             if(counter == 0) {
-                                nm[i] = nama;
-                                quan[i] = 1;
-                                hg[i] = harga;
+                                nm[count] = nama;
+                                quan[count] = 1;
+                                hg[count] = harga;
                                 count++;
                             }
                         }
                         else if(! nama_mod.equals("null")) {
                             Log.v("XXXXXXXXXXXXXXX MOD", "SINI");
                             String harga2 = jsonObject.getString("harga_modifier");
-                            nm[i] = nama_mod;
-                            if(i == 0) {
-                                nm[i] = nama_mod;
-                                quan[i] = 1;
+                            if(count == 0) {
+                                nm[count] = nama_mod;
+                                quan[count] = 1;
                             }
 
-                            for(int k = 0; k < i; k++) {
-                                if(nm[k].equals(nm[i])) {
+                            for(int k = 0; k < count; k++) {
+                                if(nm[k].equals(nama_mod)) {
                                     quan[k]++;
                                     int hgg = Integer.parseInt(harga2)*quan[k];
                                     hg[k] = String.valueOf(hgg);
@@ -179,23 +183,24 @@ public class ReceiptDetails extends AppCompatActivity {
                                 }
                             }
                             if(counter == 0) {
-                                nm[i] = nama_mod;
-                                quan[i] = 1;
-                                hg[i] = harga2;
+                                nm[count] = nama_mod;
+                                quan[count] = 1;
+                                hg[count] = harga2;
                                 count++;
                             }
                         }
                         else if(! nama_diskon.equals("null")){
-                            Log.v("XXXXXXXXXXXXXXX DISKON", "SINI");
+                            Log.v("XXXXXXXXXXXXXXX DISKON", nama_diskon);
                             String harga3 = jsonObject.getString("jumlah_diskon");
-                            nm[i] = nama_diskon;
                             if(i == 0) {
-                                nm[i] = nama_diskon;
-                                quan[i] = 1;
+                                nm[count] = nama_diskon;
+                                quan[count] = 1;
                             }
 
-                            for(int k = 0; k < i; k++) {
-                                if(nm[k].equals(nm[i])) {
+                            for(int k = 0; k < count; k++) {
+                                Log.v("Di diskon", k+" dan " + i + " berisi "+ nm[k]);
+                                if(nm[k].equals(nama_diskon)) {
+                                    Log.v("DI DISKON", "ADA YANG SAMA");
                                     quan[k]++;
                                     int hgg = Integer.parseInt(harga3)*quan[k];
                                     hg[k] = String.valueOf(hgg);
@@ -204,17 +209,17 @@ public class ReceiptDetails extends AppCompatActivity {
                                 }
                             }
                             if(counter == 0) {
-                                nm[i] = nama_diskon;
-                                quan[i] = 1;
-                                hg[i] = harga3;
+                                nm[count] = nama_diskon;
+                                quan[count] = 1;
+                                hg[count] = harga3;
                                 count++;
                             }
                         }
                         else {
                             Log.v("XXXXXXXXXXXXXXX CUSTOM", "SINI");
-                            nm[i] = "Custom Menu";
-                            hg[i] = jsonObject.getString("total_order");
-                            quan[i] = 1;
+                            nm[count] = "Custom Menu";
+                            hg[count] = jsonObject.getString("total_order");
+                            quan[count] = 1;
                             count++;
                         }
                     } catch (JSONException e) {
@@ -226,8 +231,9 @@ public class ReceiptDetails extends AppCompatActivity {
                 for(int j = 0; j < count; j++) {
                     Item item = new Item(nm[j], String.valueOf(quan[j]), hg[j]);
                     item.setName(nm[j]);
-                    item.setPrice("Rp " + hg[j]);
+                    item.setPrice(hg[j]);
                     item.setQuantity(String.valueOf(quan[j]));
+                    Log.v("DALEM FOR ADA INI YANG DIMASUKIN", "Nomor "+j+" Nama "+nm[j]+" harga "+hg[j]+" QUAN "+ quan[j]);
                     list.add(item);
                 }
                 itemadapter.notifyDataSetChanged();

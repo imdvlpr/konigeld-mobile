@@ -70,7 +70,12 @@ public class FilterProductAdapter extends RecyclerView.Adapter<RecyclerView.View
         FilterSelect productfiltersss= productfilterz.get(position);
 
         ((ViewHolder)holder).fName.setText(productfiltersss.getFiltername());
-        ((ViewHolder)holder).fPrice.setText("Rp "+productfiltersss.getFilterprice());
+        if(productfiltersss.getFilterprice() <= 100) {
+            ((ViewHolder)holder).fPrice.setText(productfiltersss.getFilterprice()+" %");
+        }
+        else {
+            ((ViewHolder)holder).fPrice.setText("Rp "+productfiltersss.getFilterprice());
+        }
         diskon = new ArrayList<>();
         produk = new ArrayList<Product>();
         paket = new ArrayList<Modifier>();
@@ -126,10 +131,16 @@ public class FilterProductAdapter extends RecyclerView.Adapter<RecyclerView.View
             String id_user = sess2.getString("id", "defaultValue");
             String words[] = tot.split(" ");
             int hghg = Integer.parseInt(words[1]);
-            int finl = hghg+hg;
-            as.putString("finn", "Rp "+finl);
-            as.putString("total", "Rp "+finl);
-            as.apply();
+            Log.v("AWALLLLLLLLLLLLLLLLLLL", ""+hghg);
+            int finl = hghg;
+            if(hg < 100) {
+
+            }
+            else {
+                finl = hghg+hg;
+            }
+            Log.v("AKHIRRRRRRRRRRR", ""+finl);
+            double pot = 0;
 
 
             for(Discount model : diskon) {
@@ -139,6 +150,7 @@ public class FilterProductAdapter extends RecyclerView.Adapter<RecyclerView.View
                     url = "http://10.0.2.2:8888/semester8/konigeld/assets/mobile/tempo.php?" +
                             "id_outlet="+idout+"&id_user="+id_user+"&id_produk=0&id_modifier=0" +
                             "&id_diskon="+id_produk+"&total=0";
+                    pot = Double.parseDouble(model.getDisc());
                     break;
                 }
                 else {
@@ -170,6 +182,7 @@ public class FilterProductAdapter extends RecyclerView.Adapter<RecyclerView.View
                         url = "http://10.0.2.2:8888/semester8/konigeld/assets/mobile/tempo.php?" +
                                 "id_outlet="+idout+"&id_user="+id_user+"&id_produk="+id_produk+"&id_modifier=0" +
                                 "&id_diskon=0&total=0";
+
                         break;
                     }
                     else {
@@ -177,6 +190,20 @@ public class FilterProductAdapter extends RecyclerView.Adapter<RecyclerView.View
                     }
                 }
             }
+
+            if(pot > 0) {
+                if(pot < 1) {
+                    double discountt = 1 - pot;
+                    Log.v("POTONGAN DISKONNYA", ""+finl);
+                    finl = (int) (finl * discountt);
+                }
+                else {
+                    finl = (int) (finl - pot);
+                }
+            }
+            as.putString("finn", "Rp "+finl);
+            as.putString("total", "Rp "+finl);
+            as.apply();
 
             new getMySqlData().execute(url);
             Log.v("myApp", url);
@@ -208,20 +235,11 @@ public class FilterProductAdapter extends RecyclerView.Adapter<RecyclerView.View
                         JSONObject jsonObject = response.getJSONObject(i);
                         String nama = jsonObject.getString("nama_dis");
                         String harga = jsonObject.getString("dis");
-                        Discount discount = new Discount(nama, "0");
-                        Double hg1 = Double.parseDouble(harga);
-                        int hg = 0;
-                        if(hg1 < 1) {
-                            hg = (int) (hg1 * 100);
-                            discount.setDisc(); //set disni
-                        }
-                        else {
-                            hg = (int) (hg1 * 1);
-                            discount.setDisc(); //set disini
-                         }
+                        Discount discount = new Discount(nama, harga);
+                        //Double hg1 = Double.parseDouble(harga);
                         discount.setName(nama);
-                        discount.setDisc("0");
-                        Log.v("XXXXXXXXXXXXXXXXXXXXXXXXXX   ", "MASUKIN "+nama);
+                        discount.setDisc(harga);
+                        Log.v("XXXXXXXXXXXXXXXXXXXXXXXXXX   ", "MASUKIN "+harga);
 
                         diskon.add(discount);
                     } catch (JSONException e) {

@@ -133,6 +133,12 @@ public class ReceiptAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
+    public void setFilter(List<Receipt> receiptss) {
+        receipts = new ArrayList<>();
+        receipts.addAll(receiptss);
+        notifyDataSetChanged();
+    }
+
     class ViewHeader extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView rDate;

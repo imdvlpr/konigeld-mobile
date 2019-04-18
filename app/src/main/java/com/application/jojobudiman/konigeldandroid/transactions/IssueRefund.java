@@ -48,6 +48,7 @@ public class IssueRefund extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), ReceiptDetails.class);
                 startActivity(i);
+                finish();
             }
         });
 

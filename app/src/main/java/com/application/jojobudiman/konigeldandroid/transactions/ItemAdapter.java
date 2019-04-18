@@ -1,6 +1,7 @@
 package com.application.jojobudiman.konigeldandroid.transactions;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,28 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         Item item = items.get(position);
         ((ViewHolder) holder).iName.setText(item.getName());
         ((ViewHolder) holder).iQuantity.setText(item.getQuantity());
-        ((ViewHolder) holder).iPrice.setText(item.getPrice());
+        Log.v("BindView", item.getName());
+        Log.v("BindView", item.getQuantity());
+        Double tes = 0.0;
+        try {
+            tes = Double.valueOf(item.getPrice());
+        } catch (NullPointerException e) {
+            tes = 0.0;
+        }
+
+
+        if(tes == 0.0) {
+
+        }
+        else {
+            if (tes <= 1) {
+                tes = tes * 100;
+                ((ViewHolder) holder).iPrice.setText(tes + " %");
+            } else {
+                ((ViewHolder) holder).iPrice.setText("Rp " + item.getPrice());
+            }
+        }
+
     }
 
 

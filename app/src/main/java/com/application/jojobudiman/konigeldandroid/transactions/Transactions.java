@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
@@ -29,6 +30,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -65,12 +67,12 @@ public class Transactions extends Fragment {
     private DividerItemDecoration dividerItemDecoration;
     private ReceiptAdapter receiptadapter;
     private List<Receipt> receiptList;
+    private Activity activity;
+
     String url;
     ImageButton menubtn;
     LinearLayout paygains;
     protected Cursor cursor;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -157,13 +159,15 @@ public class Transactions extends Fragment {
         requestQueue.add(jsonArrayRequest);
     }
 
-    /*@Override
+
+    /*
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.searchlayout, menu);
         SearchManager transactions = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
-
-        if(getActivity() != null) {
             SearchView transactionsearch = (SearchView) (menu.findItem(R.id.searchReceipt).getActionView());
+            changeSearchViewColor(transactionsearch);
+            ((EditText)transactionsearch.findViewById(R.id.searchReceipt)).setHintTextColor(getResources().getColor(R.color.colorPrimary));
             transactionsearch.setImeOptions(EditorInfo.IME_ACTION_DONE);
             transactionsearch.setSearchableInfo(transactions.getSearchableInfo(getActivity().getComponentName()));
             transactionsearch.setQueryHint(getResources().getString(R.string.searchtransactions));
@@ -171,20 +175,55 @@ public class Transactions extends Fragment {
             transactionsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
-                    return false;
+                    if(transactionsearch.isIconified()) {
+                        transactionsearch.setIconified(true);
+                    }
+                        transactionsearch.onActionViewCollapsed();
+                        return false;
+
                 }
 
                 @Override
                 public boolean onQueryTextChange(String newText) {
-                    adapter.getFilter().filter(newText);
                     return false;
                 }
+
             });
 
+
+    }
+
+    private List<Receipt> filter(List<Receipt> hue, String query) {
+        query = query.toLowerCase();
+        final List<Receipt> filtered = new ArrayList<>();
+        for (Receipt receipt : hue) {
+            final String searchtext = receipt.getId();
+            if (searchtext.startsWith(query)) {
+                filtered.add(receipt);
+            }
+        }
+
+        return filtered;
+    }
+
+
+    private void changeSearchViewColor(View view) {
+        if (view != null) {
+            if (view instanceof TextView) {
+                ((TextView) view).setTextColor(getResources().getColor(R.color.colorPrimary));
+                return;
             }
 
-        super.onCreateOptionsMenu(menu, inflater);
+            else if (view instanceof ViewGroup) {
+                ViewGroup viewGroup= (ViewGroup) view;
+                for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                    changeSearchViewColor(viewGroup.getChildAt(i));
+                }
+
+            }
+        }
     }*/
+
 
 
     /*@Override
