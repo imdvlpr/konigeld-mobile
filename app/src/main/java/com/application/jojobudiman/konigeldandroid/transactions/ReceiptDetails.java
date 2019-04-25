@@ -58,7 +58,7 @@ public class ReceiptDetails extends Activity {
         Log.v("XXXXXXXXXXXXXXXXXXXXXXXXXXX IDNYA di detail", ""+id);
         //Toast.makeText(getApplicationContext(), ""+id, Toast.LENGTH_LONG).show();
 
-        url = "http://10.0.2.2:8888/semester8/konigeld/assets/mobile/select_data.php?id_order="+id;
+        url = "http://192.168.43.251:8888/semester8/konigeld/assets/mobile/select_data.php?id_order="+id;
 
         newrec = (Button) findViewById(R.id.newreceipt);
         refund = (Button) findViewById(R.id.issuerefund);

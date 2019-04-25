@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.application.jojobudiman.konigeldandroid.R;
 import com.application.jojobudiman.konigeldandroid.sidebar.PagerAdapter;
+import com.application.jojobudiman.konigeldandroid.starter.MenuChoice;
 import com.google.android.material.tabs.TabLayout;
 
 import org.w3c.dom.Text;
@@ -107,6 +108,14 @@ public class CustomMenu extends Fragment {
             @Override
             public void onClick(View v) {
                 popup.dismiss();
+            }
+        });
+
+        yeslog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), MenuChoice.class);
+                startActivity(i);
             }
         });
 
